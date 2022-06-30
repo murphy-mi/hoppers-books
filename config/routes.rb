@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :genres
+  resources :authors
+  resources :books, only: [:index, :show]
+  resources :wishlists, only: [:index, :show]
+  resources :purchases, only: [:index, :show]
+  resources :users, only: [:index, :show]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
