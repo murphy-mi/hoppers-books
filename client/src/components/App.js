@@ -17,7 +17,7 @@ const rowStyleObj = {
   flexDirection: "row",
   justifyContent: "space-between",
   marginTop: "20px",
-  marginLeft: "15px",
+  marginLeft: "100px",
   marginRight: "15px",
   marginBottom: "20px",
   // border: "1px solid black"
@@ -66,7 +66,7 @@ function App() {
 
         <NavBar />
       </div>
-      <div className="App">
+      <div className="display-page-container">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/browse" element={<BrowsePage />} />

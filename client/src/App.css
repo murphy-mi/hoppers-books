@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin-top: 20px;
 }
 
@@ -15,16 +15,16 @@
 }
 
 /* IN App.js */
+.display-page-container {
+  text-align: center;
+}
+
 .site-title {
   text-decoration: none;
   color: rgb(0, 77, 0);
+  font-size: 25px;
   cursor: pointer;
   align-items: center;
-}
-
-.title-container {
-  text-align: center;
-  margin: 1rem;
 }
 
 .cart {
