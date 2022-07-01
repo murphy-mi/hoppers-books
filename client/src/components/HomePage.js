@@ -3,7 +3,7 @@ import { useEffect } from "react";
 function HomePage() {
 
     useEffect(() => {
-        fetch("https://www.googleapis.com/books/v1/volumes?q=education+subject&maxResults=3")
+        fetch("https://www.googleapis.com/books/v1/volumes?q=education+subject&maxResults=3&key=AIzaSyD2iMrcxWXeVK4l3X93uzwsEtrvDaUzLXE")
             .then(res => res.json())
             .then(console.log)
     }, [])
