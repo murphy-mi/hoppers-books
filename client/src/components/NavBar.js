@@ -7,9 +7,9 @@ import SearchBar from "./SearchBar.js";
 import '../index.css'
 // import CategoryContainer from "./CategoryContainer";
 
-function NavBar() {
+function NavBar({ userLoggedIn }) {
     // Placeholder for login status
-    const [user, setUser] = useState(false);
+    // const [user, setUser] = useState(false);
 
     return (
         <nav className="navbar">
@@ -23,15 +23,15 @@ function NavBar() {
             <ul className="navbar-nav-right">
                 <NavItem name="/cart" icon="🛒" />
                 {
-                    !user
+                    !userLoggedIn
                         ? <></>
                         : <NavItem name="/profile" icon="👤" />
                 }
                 {/* Will have to base this logic on login status */}
                 {
-                    !user
-                        ? <NavItem name="/signin" icon="Login" />
-                        : <NavItem name="/signout" icon="Logout" />
+                    !userLoggedIn
+                        ? <NavItem name="/login" icon="Login" />
+                        : <NavItem name="/logout" icon="Logout" />
                 }
             </ul >
         </nav >

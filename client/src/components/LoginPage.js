@@ -1,23 +1,40 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu.js";
 import NavItem from "./NavItem.js";
 import SearchBar from "./SearchBar.js";
 import '../index.css'
 // import CategoryContainer from "./CategoryContainer";
 
-function NavBar() {
+function NavBar({ handleUserSignin }) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const navigate = useNavigate()
 
-    function handleSubmit(e) {
+    function handleLoginSubmit(e) {
         e.preventDefault()
+        const loginObj = {
+            username: username,
+            password: password
+        }
+        fetch("/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginObj)
+        })
+            .then(res => res.json())
+            .then((data) => {
+                handleUserSignin(data)
+                navigate("../")
+            })
     }
 
     return (
         <div className="login-container">
             <div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleLoginSubmit}>
                     <h3>Username:</h3>
                     <input
                         type="text"
