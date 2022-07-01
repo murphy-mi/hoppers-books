@@ -16,8 +16,23 @@ function DropdownMenu(props) {
                 classNames="menu-primary"
             >
                 <div className="menu">
-                    <DropdownItem name="/science-fiction">Science Fiction</DropdownItem>
-                    <DropdownItem name="/mystery">Mystery</DropdownItem>
+                    <DropdownItem name="/architecture">Architecture</DropdownItem>
+                    <DropdownItem name="/art">Art</DropdownItem>
+                    <DropdownItem name="/computers">Computers</DropdownItem>
+                    <DropdownItem name="/cooking">Cooking</DropdownItem>
+                    <DropdownItem name="/drama">Drama</DropdownItem>
+                    <DropdownItem name="/education">Education</DropdownItem>
+                    <DropdownItem name="/fiction">Fiction</DropdownItem>
+                    <DropdownItem name="/gardening">Gardening</DropdownItem>
+                    <DropdownItem name="/history">History</DropdownItem>
+                    <DropdownItem name="/law">Law</DropdownItem>
+                    <DropdownItem name="/mathematics">Mathematics</DropdownItem>
+                    <DropdownItem name="/medical">Medical</DropdownItem>
+                    <DropdownItem name="/music">Music</DropdownItem>
+                    <DropdownItem name="/poetry">Poetry</DropdownItem>
+                    <DropdownItem name="/psychology">Psychology</DropdownItem>
+                    <DropdownItem name="/science">Science</DropdownItem>
+                    <DropdownItem name="/travel">Travel</DropdownItem>
                 </div>
             </CSSTransition>
         </div >

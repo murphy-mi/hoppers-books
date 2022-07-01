@@ -42,12 +42,17 @@ a {
   padding: 0 1rem;
   border-bottom: var(--border);
   display: flex;
+  position: sticky;
 }
 
 /* <ul> */
 
 .site-title {
   font-size: 50px;
+}
+
+.site-title:hover {
+  color: #faf3f2;
 }
 
 .search {
@@ -100,13 +105,14 @@ a {
 .dropdown {
   position: absolute;
   top: 58px;
+  height: 200px;
   width: 300px;
   transform: translateX(45%);
   background-color: var(--bg);
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 1rem;
-  overflow: hidden;
+  overflow: auto;
   transition: height var(--speed) ease;
 }
 
@@ -115,7 +121,7 @@ a {
 }
 
 .menu-item {
-  height: 50px;
+  height: 30px;
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
@@ -133,4 +139,16 @@ a {
 
 .menu-item:hover {
   background-color: #525357;
+}
+
+/* LoginPage */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #474a4d;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-top: 6rem;
+  padding-bottom: 2rem;
 }

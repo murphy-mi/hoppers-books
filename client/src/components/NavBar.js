@@ -8,6 +8,7 @@ import '../index.css'
 // import CategoryContainer from "./CategoryContainer";
 
 function NavBar() {
+    // Placeholder for login status
     const [user, setUser] = useState(false);
 
     return (

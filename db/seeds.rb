@@ -8,7 +8,7 @@
 
 puts "Seeding..."
 
-
-
+User.create(username: "hagay", password: "password", admin: true)
+User.create(username: "username", password: "password", admin: true)
 
 puts "Done seeding!"

@@ -4,7 +4,7 @@ import '../index.css'
 
 function NavItem(props) {
     const [open, setOpen] = useState(false)
-    console.log(props)
+    // console.log(props)
     return (
         <li className="nav-item">
             <Link
