@@ -8,7 +8,7 @@ import '../index.css'
 // import CategoryContainer from "./CategoryContainer";
 
 function NavBar() {
-    const [user, setUser] = useState(true);
+    const [user, setUser] = useState(false);
 
     return (
         <nav className="navbar">
@@ -29,8 +29,8 @@ function NavBar() {
                 {/* Will have to base this logic on login status */}
                 {
                     !user
-                        ? <NavItem name="/login" icon="Login" />
-                        : <NavItem name="/logout" icon="Logout" />
+                        ? <NavItem name="/signin" icon="Login" />
+                        : <NavItem name="/signout" icon="Logout" />
                 }
             </ul >
         </nav >

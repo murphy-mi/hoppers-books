@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # namespace :api do
+
+  # end
   resources :genres
   resources :authors
   resources :books, only: [:index, :show]
