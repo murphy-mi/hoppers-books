@@ -1,10 +1,10 @@
 /* IN NavBar.js */
-.nav-bar {
+/* .nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  /* overflow: hidden; */
-  margin-top: 20px;
+  justify-content: space-evenly; */
+/* overflow: hidden; */
+/* margin-top: 20px;
 }
 
 .nav-bar div {
@@ -12,10 +12,10 @@
   flex-direction: row;
   margin-left: 15px;
   margin-right: 15px;
-}
+} */
 
 /* IN App.js */
-.display-page-container {
+/* .display-page-container {
   text-align: center;
 }
 
@@ -29,4 +29,4 @@
 
 .cart {
   margin-right: 10px;
-}
+} */
