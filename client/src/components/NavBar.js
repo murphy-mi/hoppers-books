@@ -5,11 +5,8 @@ import DropdownMenu from "./DropdownMenu.js";
 import NavItem from "./NavItem.js";
 import SearchBar from "./SearchBar.js";
 import '../index.css'
-// import CategoryContainer from "./CategoryContainer";
 
-function NavBar({ userLoggedIn }) {
-    // Placeholder for login status
-    // const [user, setUser] = useState(false);
+function NavBar({ user, onLogout }) {
 
     return (
         <nav className="navbar">
@@ -23,15 +20,12 @@ function NavBar({ userLoggedIn }) {
             <ul className="navbar-nav-right">
                 <NavItem name="/cart" icon="🛒" />
                 {
-                    !userLoggedIn
-                        ? <></>
-                        : <NavItem name="/profile" icon="👤" />
+                    user && <NavItem name="/profile" icon="👤" />
                 }
-                {/* Will have to base this logic on login status */}
                 {
-                    !userLoggedIn
+                    !user
                         ? <NavItem name="/login" icon="Login" />
-                        : <NavItem name="/logout" icon="Logout" />
+                        : <h3 icon="Logout" onClick={onLogout}>Logout</h3>
                 }
             </ul >
         </nav >
