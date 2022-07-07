@@ -1,5 +1,5 @@
 // import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+// import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu.js";
 import NavItem from "./NavItem.js";
@@ -24,8 +24,8 @@ function NavBar({ user, onLogout }) {
                 }
                 {
                     !user
-                        ? <NavItem name="/login" icon="Login" />
-                        : <h3 icon="Logout" onClick={onLogout}>Logout</h3>
+                        ? <Link to="/login" ><h3 style={{ color: '#faf3f2' }}>Login</h3></Link>
+                        : <h3 style={{ color: '#faf3f2' }} icon="Logout" onClick={onLogout}>Logout</h3>
                 }
             </ul >
         </nav >

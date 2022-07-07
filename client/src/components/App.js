@@ -47,11 +47,11 @@ function App() {
         <div className="display-page-container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
+            <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
             <Route path="/cart" element={<h1>Cart Page</h1>} />
-            <Route path="/browse" element={<BrowsePage />} />
-            <Route path="/browse/:name" element={<BrowsePage />} />
+            <Route path="/browse" element={<BrowsePage user={user} />} />
+            <Route path="/browse/:name" element={<BrowsePage user={user} />} />
           </Routes>
         </div>
       </div>

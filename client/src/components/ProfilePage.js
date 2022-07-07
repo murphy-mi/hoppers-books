@@ -1,15 +1,45 @@
-function ProfilePage() {
+import React, { useEffect, useState } from "react";
 
-    function handleLogoutSubmit(e) {
-        e.preventDefault();
-        // Need logout functionality here (DELETE request?)
-    }
+
+
+
+function ProfilePage(user) {
+    const [wishlists, setWishlists] = useState([])
+
+    useEffect(() => {
+        fetch('/wishlists')
+            .then(res => res.json())
+            .then(setWishlists)
+    }, [])
+
+    const userWishlists = wishlists.filter(wishlist => wishlist.user_id === user.user.id)
+
+    // console.log(userWishlists.map(wishlist => wishlist.book.title.toString()))
 
     return (
-        <>
-            <h3>ProfilePage goes here</h3>
-            <button onClick={handleLogoutSubmit}>Logout</button>
-        </>
+        <div className="profile-page-container">
+            <div>
+                <h2 style={{ display: "flex", justifyContent: 'center' }}>Hello, {user.user.username}!</h2>
+            </div>
+            <div className="account-wishlist-container">
+                <div>
+                    <h4>Account</h4>
+                    {/* <h3>Reset Password</h3> */}
+                    {/* Reset password, add email address? */}
+                </div>
+                <div>
+                    <h4>Wishlist</h4>
+                    <ul>
+                        {userWishlists.map(wishlist => (
+                            <li>{wishlist.book.title}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <h4>Purchases</h4>
+                </div>
+            </div>
+        </div>
     );
 }
 

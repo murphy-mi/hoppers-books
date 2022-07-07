@@ -33,11 +33,41 @@ const BookPhoto = styled.img`
     object-fit: cover;
 `;
 
-function ResultCard({ result, index }) {
+function ResultCard({ result, index, user }) {
+    const [inWishlist, setInWishlist] = useState(false)
+    const [inCart, setInCart] = useState(false)
     const { accessInfo, searchInfo, selfLink, volumeInfo } = result;
+
+    console.log(user)
+
+    function onWishlistClick(e) {
+        e.preventDefault()
+        // making a separate post request to add the book to our DB?
+        // THEN using that book id to create a new wishlists item
+        const bookObj = {
+            // book_id: ,
+            user_id: user.user.id,
+        }
+
+        // fetch("/wishlists", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({ username: username, password: password }),
+        // }).then
+        setInWishlist(!inWishlist)
+
+
+    }
+
+    function onCartClick(e) {
+        e.preventDefault()
+        setInCart(!inCart)
+    }
     return (
         <Card>
-            <a href={volumeInfo.infoLink} target="_blank">
+            <a href={volumeInfo.infoLink} target="_blank" rel="noreferrer">
                 <Link to={"#"}>
                     <BookPhoto
                         src={
@@ -50,6 +80,19 @@ function ResultCard({ result, index }) {
                 </Link>
             </a>
             <h3>{volumeInfo.title}</h3>
+            <div className="wishlist-cart-container">
+                <button
+                    onClick={onWishlistClick}
+                >
+                    {!inWishlist ? "Add to Wishlist" : "Remove from Wishlist"}
+                </button>
+                <button
+                    onClick={onCartClick}
+                >
+                    {!inCart ? "Add to Cart" : "Remove from Cart"}
+                </button>
+            </div>
+
         </Card>
     );
 }

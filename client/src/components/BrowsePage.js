@@ -41,28 +41,30 @@ const ResultContainer = styled.div`
   width: 100%;
 `;
 
-function BrowsePage() {
+function BrowsePage(user) {
   const [results, setResults] = useState({ items: [] })
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const params = useParams()
-  console.log(results)
+  console.log(user)
 
   useEffect(() => {
-    setLoading(true)
+    setIsLoading(true)
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${params.name}+subject&printType=books&maxResults=40&key=AIzaSyD2iMrcxWXeVK4l3X93uzwsEtrvDaUzLXE`)
       .then(res => res.json())
       .then(setResults)
-    setLoading(false)
+    setIsLoading(false)
   }, [params])
 
   const renderResults = results.items.map((result, index) => (
-    <ResultCard key={index} result={result} index={index} />
+    <ResultCard key={index} result={result} index={index} user={user} />
   ));
 
   return (
     <>
       <CategoryTitle>
-        <h1>{params.name.toUpperCase()}</h1>
+        <h1>
+          {isLoading ? "Loading..." : `${params.name.toUpperCase()}`}
+        </h1>
       </CategoryTitle>
       <Cont>
         <ResultContainer>{renderResults}</ResultContainer>

@@ -152,3 +152,36 @@ a {
   margin-top: 6rem;
   padding-bottom: 2rem;
 }
+
+/* ProfilePage */
+
+.profile-page-container {
+  /* display: flex; */
+  position: relative;
+  /* justify-content: center; */
+  border: 1px solid #474a4d;
+  /* margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 6rem;
+  padding-bottom: 2rem; */
+}
+
+.account-wishlist-container {
+  /* position: absolute; */
+  display: grid;
+  justify-content: center;
+  border: 1px solid #474a4d;
+  /* margin-left: 15px;
+  margin-right: 15px; */
+}
+
+/* ResultCard */
+
+.wishlist-cart-container {
+  display: grid;
+}
+
+/* .wishlist-cart-container button{
+  grid-column: 1;
+  grid-row: 1;
+} */
