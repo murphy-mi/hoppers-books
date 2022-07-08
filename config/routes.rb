@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   # namespace :api do
 
   # end
-  resources :genres
-  resources :authors
-  resources :books, only: [:index, :show]
-  resources :wishlists, only: [:index, :show]
+  resources :genres, only: [:index, :show]
+  resources :authors, only: [:index, :show]
+  resources :books, only: [:index, :show, :create]
+  resources :wishlists, only: [:index, :show, :create]
   resources :purchases, only: [:index, :show]
 
   resources :users, only: [:index]

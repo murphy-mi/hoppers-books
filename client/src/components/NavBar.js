@@ -24,7 +24,7 @@ function NavBar({ user, onLogout }) {
                 }
                 {
                     !user
-                        ? <Link to="/login" ><h3 style={{ color: '#faf3f2' }}>Login</h3></Link>
+                        ? <Link to="/login" ><h3>Login</h3></Link>
                         : <h3 style={{ color: '#faf3f2' }} icon="Logout" onClick={onLogout}>Logout</h3>
                 }
             </ul >
