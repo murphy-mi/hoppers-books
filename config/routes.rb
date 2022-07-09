@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   # namespace :api do
-
   # end
-  resources :genres, only: [:index, :show]
-  resources :authors, only: [:index, :show]
   resources :books, only: [:index, :show, :create]
+  resources :cart_items, only: [:index, :show, :create]
   resources :wishlists, only: [:index, :show, :create]
   resources :purchases, only: [:index, :show]
 

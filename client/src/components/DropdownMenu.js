@@ -5,12 +5,12 @@ import DropdownItem from "./DropdownItem";
 import '../index.css'
 
 function DropdownMenu(props) {
-    const [activeMenu, setActiveMenu] = useState('main')
+    const [activeMenu, setActiveMenu] = useState(false)
 
     return (
         <div className="dropdown">
             <CSSTransition
-                in={activeMenu === 'main'}
+                in={true}
                 unmountOnExit
                 timeout={500}
                 classNames="menu-primary"

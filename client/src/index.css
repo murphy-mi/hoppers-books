@@ -157,6 +157,7 @@ a {
 
 .profile-page-container {
   /* display: flex; */
+  z-index: -3;
   position: relative;
   /* justify-content: center; */
   border: 1px solid #474a4d;

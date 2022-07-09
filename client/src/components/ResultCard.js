@@ -39,20 +39,18 @@ function ResultCard({ result, index, user }) {
     const [bookPrice, setBookPrice] = useState(null)
     const { accessInfo, searchInfo, selfLink, volumeInfo } = result;
 
-    console.log(result)
+    // console.log(result)
     // console.log(user)
 
 
     useEffect(() => {
         const randPrice = ((Math.random() * 12) + 4)
         const strPrice = randPrice > 10 ? `${randPrice}`.substring(0, 5) : `${randPrice}`.substring(0, 4)
-        setBookPrice(`$${strPrice}`)
+        setBookPrice(strPrice)
     }, [])
 
     function onWishlistClick(e) {
         e.preventDefault()
-        // making a separate post request to add the book to our DB?
-        // THEN using that book id to create a new wishlists item
         console.log(bookPrice)
 
         const bookObj = {
@@ -62,6 +60,7 @@ function ResultCard({ result, index, user }) {
             genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "",
             image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
         }
+        console.log(bookObj)
 
         fetch("/books", {
             method: "POST",
@@ -88,22 +87,43 @@ function ResultCard({ result, index, user }) {
                 .then(res => res.json())
                 .then(console.log)
         }
-
-
-        // fetch("/wishlists", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({ username: username, password: password }),
-        // }).then
         setInWishlist(!inWishlist)
-
-
     }
 
     function onCartClick(e) {
         e.preventDefault()
+        const bookObj = {
+            title: volumeInfo.title,
+            price: bookPrice,
+            author: volumeInfo.authors[0] ? volumeInfo.authors[0] : "",
+            genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "",
+            image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+        }
+        fetch("/books", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bookObj)
+        })
+            .then(res => res.json())
+            .then(data => saveCartItem(data))
+
+        function saveCartItem(bookData) {
+            const cartItemObj = {
+                book_id: bookData.id,
+                user_id: user.user.id
+            }
+            fetch("/cart_items", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(cartItemObj)
+            })
+                .then(res => res.json())
+                .then(console.log)
+        }
         setInCart(!inCart)
     }
 

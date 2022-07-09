@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-
-
-
 function ProfilePage(user) {
     const [wishlists, setWishlists] = useState([])
 

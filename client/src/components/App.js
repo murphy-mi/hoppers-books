@@ -7,6 +7,7 @@ import BrowsePage from "./BrowsePage.js"
 import LoginPage from "./LoginPage.js";
 import HomePage from "./HomePage.js";
 import ProfilePage from "./ProfilePage.js";
+import CartPage from "./CartPage.js";
 
 
 
@@ -38,6 +39,8 @@ function App() {
     });
   }
 
+  if (!user) return (<></>)
+
   return (
     <>
       <div>
@@ -49,7 +52,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
-            <Route path="/cart" element={<h1>Cart Page</h1>} />
+            <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />
             <Route path="/browse/:name" element={<BrowsePage user={user} />} />
           </Routes>
