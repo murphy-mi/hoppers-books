@@ -1,41 +1,47 @@
 import React, { useState } from "react";
-import { CSSTransition } from 'react-transition-group';
-import { Link } from "react-router-dom";
-import DropdownItem from "./DropdownItem";
+import { Link, useNavigate } from "react-router-dom";
 import '../index.css'
 
 function DropdownMenu(props) {
-    const [activeMenu, setActiveMenu] = useState(false)
+    const categoryArr = [
+        "architecture",
+        "art",
+        "computers",
+        "cooking",
+        "drama",
+        "education",
+        "fiction",
+        "gardening",
+        "history",
+        "law",
+        "mathematics",
+        "medical",
+        "music",
+        "poetry",
+        "psychology",
+        "science",
+        "travel"
+    ]
 
-    return (
-        <div className="dropdown">
-            <CSSTransition
-                in={true}
-                unmountOnExit
-                timeout={500}
-                classNames="menu-primary"
+    const dropDownCategories = categoryArr.map(category => {
+        return (
+            <a
+                className="link"
+                key={category}
+                href={`http://localhost:4000/browse/${category}`}
             >
-                <div className="menu">
-                    <DropdownItem name="/architecture">Architecture</DropdownItem>
-                    <DropdownItem name="/art">Art</DropdownItem>
-                    <DropdownItem name="/computers">Computers</DropdownItem>
-                    <DropdownItem name="/cooking">Cooking</DropdownItem>
-                    <DropdownItem name="/drama">Drama</DropdownItem>
-                    <DropdownItem name="/education">Education</DropdownItem>
-                    <DropdownItem name="/fiction">Fiction</DropdownItem>
-                    <DropdownItem name="/gardening">Gardening</DropdownItem>
-                    <DropdownItem name="/history">History</DropdownItem>
-                    <DropdownItem name="/law">Law</DropdownItem>
-                    <DropdownItem name="/mathematics">Mathematics</DropdownItem>
-                    <DropdownItem name="/medical">Medical</DropdownItem>
-                    <DropdownItem name="/music">Music</DropdownItem>
-                    <DropdownItem name="/poetry">Poetry</DropdownItem>
-                    <DropdownItem name="/psychology">Psychology</DropdownItem>
-                    <DropdownItem name="/science">Science</DropdownItem>
-                    <DropdownItem name="/travel">Travel</DropdownItem>
-                </div>
-            </CSSTransition>
-        </div >
+                {category}
+                {/* {category.substring(0, 1).toUpperCase() === + category.substring(1, category.length)} */}
+            </a >
+        )
+    })
+    return (
+        <div className="header-element" id="dropdown-container">
+            <span className="dropdown-button">CATEGORY</span>
+            <div className="dropdown-content">
+                {dropDownCategories}
+            </div>
+        </div>
     );
 }
 

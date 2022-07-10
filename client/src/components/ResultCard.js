@@ -133,18 +133,16 @@ function ResultCard({ result, index, user }) {
 
     return (
         <Card>
-            <a href={volumeInfo.infoLink} target="_blank" rel="noreferrer">
-                <Link to={"#"}>
-                    <BookPhoto
-                        src={
-                            volumeInfo.imageLinks
-                                ? volumeInfo.imageLinks.smallThumbnail
-                                : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
-                        }
-                        alt="book photo"
-                    />
-                </Link>
-            </a>
+            <Link to={"#"}>
+                <BookPhoto
+                    src={
+                        volumeInfo.imageLinks
+                            ? volumeInfo.imageLinks.smallThumbnail
+                            : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+                    }
+                    alt="book photo"
+                />
+            </Link>
             <h3>{limitChars(volumeInfo.title)}</h3>
             <h4>{volumeInfo.authors && limitChars(volumeInfo.authors[0])}</h4>
             <h4>{bookPrice}</h4>

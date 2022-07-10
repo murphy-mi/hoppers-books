@@ -12,20 +12,18 @@ function NavBar({ user, onLogout }) {
         <nav className="navbar">
             <ul className="navbar-nav-left">
                 <Link to="/" className="site-title">HOPPER'S BOOKS</Link>
-                <NavItem icon="Category">
-                    <DropdownMenu />
-                </NavItem>
+                <DropdownMenu />
                 <SearchBar />
             </ul>
             <ul className="navbar-nav-right">
-                <NavItem name="/cart" icon="🛒" />
+                <NavItem className="link" name="/cart" icon="🛒" />
                 {
-                    user && <NavItem name="/profile" icon="👤" />
+                    user && <NavItem className="link" name="/profile" icon="👤" />
                 }
                 {
                     !user
-                        ? <Link to="/login" ><h3>Login</h3></Link>
-                        : <h3 style={{ color: '#faf3f2' }} icon="Logout" onClick={onLogout}>Logout</h3>
+                        ? <Link className="link" to="/login" ><h3>Login</h3></Link>
+                        : <h3 className="link" style={{ color: 'black' }} icon="Logout" onClick={onLogout}>Logout</h3>
                 }
             </ul >
         </nav >

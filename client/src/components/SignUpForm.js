@@ -63,25 +63,25 @@ function SignUpForm({ onLogin }) {
         e.preventDefault();
         setErrors([]);
         setIsLoading(true);
-        fetch("/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-                password_confirmation: passwordConfirmation,
-                admin: false
-            }),
-        }).then((r) => {
-            setIsLoading(false);
-            if (r.ok) {
-                r.json().then((user) => onLogin(user));
-            } else {
-                r.json().then((err) => setErrors(err.errors));
-            }
-        });
+        // fetch("/signup", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         username: username,
+        //         password: password,
+        //         password_confirmation: passwordConfirmation,
+        //         admin: false
+        //     }),
+        // }).then((r) => {
+        //     setIsLoading(false);
+        //     if (r.ok) {
+        //         r.json().then((user) => onLogin(user));
+        //     } else {
+        //         r.json().then((err) => setErrors(err.errors));
+        //     }
+        // });
     }
 
     return (

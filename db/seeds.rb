@@ -12,16 +12,10 @@ u1 = User.create(username: "hagay", password: "password", admin: true)
 u2 = User.create(username: "username", password: "password", admin: true)
 
 
-a1 = Author.create(name: "Shel Silverstein")
-a2 = Author.create(name: "J.G. Ballard")
+# b1 = Book.create(title: "Where The Sidewalk Ends", author_id: a1.id, genre_id: g1.id)
+# b2 = Book.create(title: "Crash", author_id: a2.id, genre_id: g2.id)
 
-g1 = Genre.create(name: "Poetry")
-g2 = Genre.create(name: "Drama")
-
-b1 = Book.create(title: "Where The Sidewalk Ends", author_id: a1.id, genre_id: g1.id)
-b2 = Book.create(title: "Crash", author_id: a2.id, genre_id: g2.id)
-
-w1 = Wishlist.create(book_id: b1.id, user_id: u1.id)
-w2 = Wishlist.create(book_id: b2.id, user_id: u1.id)
+# w1 = Wishlist.create(book_id: b1.id, user_id: u1.id)
+# w2 = Wishlist.create(book_id: b2.id, user_id: u1.id)
 
 puts "Done seeding!"

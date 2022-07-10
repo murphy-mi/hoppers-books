@@ -12,7 +12,7 @@ code {
 }
 
 
-:root {
+/* :root {
   --bg: #242526;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
@@ -20,7 +20,7 @@ code {
   --border: 1px solid #474a4d;
   --border-radius: 8px;
   --speed: 500ms;
-}
+} */
 
 ul {
   list-style: none;
@@ -28,31 +28,42 @@ ul {
   padding: 0;
 }
 
-a {
-  color: var(--text-color);
-  text-decoration: none;
-}
 
 /* Top Navigation Bar */
 
-/* <nav> */
 .navbar {
-  height: var(--nav-size);
-  background-color: var(--bg);
-  padding: 0 1rem;
-  border-bottom: var(--border);
+  background-color: #F3F3F3;
   display: flex;
+  align-items: baseline;
+  padding: 0.5rem;
+  gap: 1rem;
+  /* position: -webkit-sticky;
   position: sticky;
+  top: 0; */
+  /* height: var(--nav-size);
+  border-bottom: var(--border); */
 }
 
-/* <ul> */
+.link {
+  background: none;
+  border: none;
+  text-decoration: none;
+  color: rgb(47, 43, 43);
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0;
+}
+
 
 .site-title {
+  text-decoration: none;
   font-size: 50px;
+  color: rgb(156, 196, 156);
+  text-shadow: 2px 2px green;
 }
 
 .site-title:hover {
-  color: #faf3f2;
+  color: rgb(1, 54, 1);
 }
 
 .search {
@@ -74,12 +85,12 @@ a {
 }
 
 /* <li> */
-.nav-item {
+/* .nav-item {
   width: calc(var(--nav-size) * 1);
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 /* Icon Button */
 .icon-button {
@@ -100,9 +111,49 @@ a {
   filter: brightness(1.2);
 }
 
-/* Dropdown Menu */
+/* DROPDOWN */
 
-.dropdown {
+.header-element {
+  display: flex;
+  flex-direction: row;
+  padding: 0 45px 0 30px;
+}
+
+#dropdown-container {
+  position: relative;
+  display: inline-block;
+  height: 100px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: rgb(252, 252, 252);
+  min-width: 160px;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.dropdown-content a {
+  color: rgb(0, 0, 0);
+  padding: 12px 7px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: green;
+}
+
+#dropdown-container:hover .dropdown-content {
+  display: block;
+}
+
+
+/* .dropdown {
   position: absolute;
   top: 58px;
   height: 200px;
@@ -114,32 +165,97 @@ a {
   padding: 1rem;
   overflow: auto;
   transition: height var(--speed) ease;
+} */
+
+/* .dropdown {
+  position: relative;
+  width: 400px;
+  margin: 100px auto;
+  margin-top: 10px;
+ margin-right: 10px;
+} */
+
+/* .dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: calc(100% + .25rem);
+  background-color: white;
+  padding: 0.75 rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+} */
+
+/* .dropdown.active>.link+.dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+} */
+
+/* .dropdown-item:hover {
+  cursor: pointer;
+} */
+
+/* .dropdown-links {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+} */
+
+/* .dropdown .dropdown-btn {
+  padding: 15px 20px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.menu {
+.dropdown .dropdown-content {
+  position: absolute;
+  top: 110%;
+  padding: 15px;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  font-weight: 500;
+  color: #333;
+} */
+
+
+/* .menu {
   width: 100%;
-}
+} */
 
-.menu-item {
+/* .menu-item {
   height: 30px;
   display: flex;
   align-items: center;
   border-radius: var(--border-radius);
   transition: background var(--speed);
   padding: 0.5rem;
-}
+} */
 
-.menu-item .icon-button {
+/* .menu-item .icon-button {
   margin-right: 0.5rem;
-}
+} */
 
-.menu-item .icon-button:hover {
+/* .menu-item .icon-button:hover {
   filter: none;
-}
+} */
 
-.menu-item:hover {
+/* .menu-item:hover {
   background-color: #525357;
-}
+} */
+
+
+
+
+
 
 /* LoginPage */
 

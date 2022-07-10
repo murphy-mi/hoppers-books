@@ -1,6 +1,8 @@
 class User < ApplicationRecord
     has_many :purchases
     has_many :wishlists
+    has_many :cart_items
+    has_many :books, through: :cart_items
     has_many :books, through: :wishlists
     has_many :books, through: :purchases
 

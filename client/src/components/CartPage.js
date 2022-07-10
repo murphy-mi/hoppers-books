@@ -30,36 +30,41 @@ const CartItem = styled.a`
 `;
 
 function CartPage(user) {
-    const [cartItems, setCartItems] = useState([])
-    console.log(cartItems)
+  const [cartItems, setCartItems] = useState([])
+  console.log(cartItems)
 
-    useEffect(() => {
-        fetch('/cart_items')
-            .then(res => res.json())
-            .then(setCartItems)
-    }, [])
+  useEffect(() => {
+    fetch('/cart_items')
+      .then(res => res.json())
+      .then(setCartItems)
+  }, [])
 
-    const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
+  if (!user.user) return (
+    <h2 style={{ display: "flex", justifyContent: 'center' }}>Cart</h2>
+  )
 
-    return (
-        <div>
+
+  const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
+
+  return (
+    <div>
+      <div>
+        <h2 style={{ display: "flex", justifyContent: 'center' }}>{user.user.username}'s cart</h2>
+      </div>
+      <CartItemContainer>
+        {userCartItems.map(cartItem => (
+          <CartItem key={cartItem.id} >
             <div>
-                <h2 style={{ display: "flex", justifyContent: 'center' }}>{user.user.username}'s cart</h2>
+              <h3>{cartItem.book.title}</h3>
             </div>
-            <CartItemContainer>
-                {userCartItems.map(cartItem => (
-                    <CartItem key={cartItem.id} >
-                        <div>
-                            <h3>{cartItem.book.title}</h3>
-                        </div>
-                        <div>
-                            <h4>{cartItem.book.author}</h4>
-                        </div>
-                    </CartItem>
-                ))}
-            </CartItemContainer>
-        </div >
-    );
+            <div>
+              <h4>{cartItem.book.author}</h4>
+            </div>
+          </CartItem>
+        ))}
+      </CartItemContainer>
+    </div >
+  );
 }
 
 export default CartPage;

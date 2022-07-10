@@ -1,14 +1,11 @@
-// import { useState, useEffect } from "react";
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import NavBar from "./NavBar.js";
 import BrowsePage from "./BrowsePage.js"
 import LoginPage from "./LoginPage.js";
 import HomePage from "./HomePage.js";
 import ProfilePage from "./ProfilePage.js";
 import CartPage from "./CartPage.js";
-
 
 
 function App() {
@@ -39,7 +36,7 @@ function App() {
     });
   }
 
-  if (!user) return (<></>)
+  // if (!user) return (<></>)
 
   return (
     <>
