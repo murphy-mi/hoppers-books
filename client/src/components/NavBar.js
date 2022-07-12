@@ -5,13 +5,23 @@ import DropdownMenu from "./DropdownMenu.js";
 import NavItem from "./NavItem.js";
 import SearchBar from "./SearchBar.js";
 import '../index.css'
+import frogLogo from "../frog-logo.png"
+import styled from "styled-components";
 
 function NavBar({ user, onLogout }) {
+
+    const LogoImage = styled.img`
+    width: 50%;
+    height: auto;
+    margin: 0;
+`;
 
     return (
         <nav className="navbar">
             <ul className="navbar-nav-left">
-                <Link to="/" className="site-title">HOPPER'S BOOKS</Link>
+                <Link to="/" className="site-title">
+                    <LogoImage src={frogLogo} alt="Hopper's Books" />
+                </Link>
                 <DropdownMenu />
                 <SearchBar />
             </ul>

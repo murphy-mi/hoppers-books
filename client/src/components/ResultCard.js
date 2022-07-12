@@ -62,7 +62,7 @@ function ResultCard({ result, index, user }) {
         }
         console.log(bookObj)
 
-        fetch("/books", {
+        fetch("http://localhost:3000/books", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -77,7 +77,7 @@ function ResultCard({ result, index, user }) {
                 book_id: bookData.id,
                 user_id: user.user.id
             }
-            fetch("/wishlists", {
+            fetch("http://localhost:3000/wishlists", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -99,7 +99,7 @@ function ResultCard({ result, index, user }) {
             genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "N/A",
             image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
         }
-        fetch("/books", {
+        fetch("http://localhost:3000/books", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -114,7 +114,7 @@ function ResultCard({ result, index, user }) {
                 book_id: bookData.id,
                 user_id: user.user.id
             }
-            fetch("/cart_items", {
+            fetch("http://localhost:3000/cart_items", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

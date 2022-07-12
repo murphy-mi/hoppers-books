@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :cart_items, except: [:update]
   resources :wishlists, only: [:index, :show, :create]
   resources :purchases, only: [:index, :show]
+  resources :best_sellers, only: [:index]
 
   resources :users, only: [:index]
   get "/me", to: "users#show"

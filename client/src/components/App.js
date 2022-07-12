@@ -7,6 +7,7 @@ import HomePage from "./HomePage.js";
 import ProfilePage from "./ProfilePage.js";
 import CartPage from "./CartPage.js";
 import BookPage from "./BookPage.js";
+import SearchPage from "./SearchPage.js";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("/me").then((r) => {
+    fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => setUser(user));
       }
@@ -29,7 +30,7 @@ function App() {
   }
 
   function onLogout() {
-    fetch("/logout", { method: "DELETE" }).then((r) => {
+    fetch("http://localhost:3000/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(null);
         navigate("../")
@@ -50,6 +51,9 @@ function App() {
             <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />
             <Route path="/browse/:name" element={<BrowsePage user={user} />} />
+            <Route path="/search" element={<SearchPage user={user} />} />
+            <Route path="/search/:name" element={<SearchPage user={user} />} />
+            <Route path="/book" element={<BookPage user={user} />} />
           </Routes>
         </div>
       </div>
@@ -70,6 +74,8 @@ function App() {
             <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />
             <Route path="/browse/:name" element={<BrowsePage user={user} />} />
+            <Route path="/search" element={<SearchPage user={user} />} />
+            <Route path="/search/:name" element={<SearchPage user={user} />} />
             <Route path="/book" element={<BookPage user={user} />} />
           </Routes>
         </div>

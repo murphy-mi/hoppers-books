@@ -1,5 +1,7 @@
 class CartItemsController < ApplicationController
 
+    skip_before_action :authorize
+
     def index
         cart_items = CartItem.all
         render json: cart_items, status: :ok

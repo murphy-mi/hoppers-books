@@ -35,7 +35,7 @@ function CartPage(user) {
   console.log(cartItems)
 
   useEffect(() => {
-    fetch('/cart_items')
+    fetch('http://localhost:3000/cart_items')
       .then(res => res.json())
       .then(setCartItems)
   }, [])
@@ -50,7 +50,7 @@ function CartPage(user) {
     e.preventDefault();
     // GETTING UNCAUGHT (IN PROMISE) SYNTAXERROR: UNEXPECTED END OF JSON INPUT 
     // BUT WHEN I MAKE A CHANGE TO MY CODE (EVEN TYPING COMMENTS) AND SAVE IT THE FETCH GOES THROUGH 
-    fetch(`/cart_items/${e.target.id}`, {
+    fetch(`http://localhost:3000/cart_items/${e.target.id}`, {
       method: 'DELETE',
     })
       .then(res => res.json())

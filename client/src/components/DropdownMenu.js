@@ -28,7 +28,7 @@ function DropdownMenu(props) {
             <a
                 className="link"
                 key={category}
-                href={`http://localhost:4000/browse/${category}`}
+                href={`http://localhost:3000/browse/${category}`}
             >
                 {category}
                 {/* {category.substring(0, 1).toUpperCase() === + category.substring(1, category.length)} */}

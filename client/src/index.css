@@ -64,6 +64,7 @@ ul {
   font-size: 50px;
   color: rgb(156, 196, 156);
   text-shadow: 2px 2px green;
+  margin: 0;
 }
 
 .site-title:hover {
@@ -257,10 +258,6 @@ ul {
 } */
 
 
-
-
-
-
 /* LoginPage */
 
 .login-container {
@@ -308,3 +305,82 @@ ul {
 } */
 
 /* HOMEPAGE */
+
+
+/* SearchBar */
+
+.search-container {
+  margin: 50px auto;
+  width: 500px;
+  height: 60px
+}
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.search-field {
+  width: 100%;
+  padding: 10px 35px 10px 15px;
+  border: none;
+  border-radius: 100px;
+  outline: none;
+}
+
+.search-button {
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: -33px;
+}
+
+.search-button img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
+/* Carousel */
+
+.slide img {
+  width: 15rem;
+  height: 25rem;
+  margin: 0 auto;
+}
+
+.slide {
+  transform: scale(0.2);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.activeSlide {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.arrow {
+  background-color: white;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow h1 {
+  transition: color 300ms;
+}
+
+.arrow h1:hover {
+  color: green;
+}
+
+.next {
+  right: 0%;
+  top: 50%;
+}
+
+.previous {
+  left: 0%;
+  top: 50%;
+}

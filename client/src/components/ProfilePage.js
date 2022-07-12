@@ -5,7 +5,7 @@ function ProfilePage(user) {
 
 
     useEffect(() => {
-        fetch('/wishlists')
+        fetch('http://localhost:3000/wishlists')
             .then(res => res.json())
             .then(setWishlists)
     }, [])
