@@ -6,6 +6,7 @@ import LoginPage from "./LoginPage.js";
 import HomePage from "./HomePage.js";
 import ProfilePage from "./ProfilePage.js";
 import CartPage from "./CartPage.js";
+import BookPage from "./BookPage.js";
 
 
 function App() {
@@ -36,7 +37,24 @@ function App() {
     });
   }
 
-  // if (!user) return (<></>)
+  if (!user) return (
+    <>
+      <div>
+        <div>
+          <NavBar user={user} onLogout={onLogout} />
+        </div>
+        <div className="display-page-container">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
+            <Route path="/cart" element={<CartPage user={user} />} />
+            <Route path="/browse" element={<BrowsePage user={user} />} />
+            <Route path="/browse/:name" element={<BrowsePage user={user} />} />
+          </Routes>
+        </div>
+      </div>
+    </>
+  )
 
   return (
     <>
@@ -52,6 +70,7 @@ function App() {
             <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />
             <Route path="/browse/:name" element={<BrowsePage user={user} />} />
+            <Route path="/book" element={<BookPage user={user} />} />
           </Routes>
         </div>
       </div>

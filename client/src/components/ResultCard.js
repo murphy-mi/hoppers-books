@@ -95,8 +95,8 @@ function ResultCard({ result, index, user }) {
         const bookObj = {
             title: volumeInfo.title,
             price: bookPrice,
-            author: volumeInfo.authors[0] ? volumeInfo.authors[0] : "",
-            genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "",
+            author: volumeInfo.authors[0] ? volumeInfo.authors[0] : "N/A",
+            genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "N/A",
             image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
         }
         fetch("/books", {

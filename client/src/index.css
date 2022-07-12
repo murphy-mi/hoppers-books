@@ -1,3 +1,7 @@
+/* @import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css"; */
+
+
 body {
   margin: 0;
   /* background: #151616; */
@@ -302,3 +306,5 @@ ul {
   grid-column: 1;
   grid-row: 1;
 } */
+
+/* HOMEPAGE */

@@ -1,3 +1,14 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+.App {
+  width: 50%;
+  margin: 10rem auto;
+  height: 570px;
+}
+
+
+
 /* IN NavBar.js */
 /* .nav-bar {
   display: flex;

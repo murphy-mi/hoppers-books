@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # namespace :api do
   # end
   resources :books, only: [:index, :show, :create]
-  resources :cart_items, only: [:index, :show, :create]
+  resources :cart_items, except: [:update]
   resources :wishlists, only: [:index, :show, :create]
   resources :purchases, only: [:index, :show]
 

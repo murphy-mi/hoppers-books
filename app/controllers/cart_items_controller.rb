@@ -6,7 +6,7 @@ class CartItemsController < ApplicationController
     end
 
     def show
-        cart_item = CartItem.find(params[:id])
+        cart_item = find_cart_item
         render json: cart_item, status: :ok
     end
 
@@ -15,8 +15,17 @@ class CartItemsController < ApplicationController
         render json: cart_item, status: :created
     end
 
+    def destroy
+        cart_item = find_cart_item
+        cart_item.destroy
+        head :no_content
+    end
+
     private
 
+    def find_cart_item
+        CartItem.find(params[:id])
+    end
     def cart_item_params
         params.permit(:book_id, :user_id)
     end

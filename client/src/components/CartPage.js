@@ -31,6 +31,7 @@ const CartItem = styled.a`
 
 function CartPage(user) {
   const [cartItems, setCartItems] = useState([])
+  const [cartTotalPrice, setCartTotalPrice] = useState(0.00)
   console.log(cartItems)
 
   useEffect(() => {
@@ -39,10 +40,29 @@ function CartPage(user) {
       .then(setCartItems)
   }, [])
 
+  useEffect(() => {
+    let totalPrice = 0.00;
+    cartItems.forEach((cartItem) => totalPrice += cartItem.price)
+    setCartTotalPrice(totalPrice)
+  }, [cartItems])
+
+  function onRemoveClick(e) {
+    e.preventDefault();
+    // GETTING UNCAUGHT (IN PROMISE) SYNTAXERROR: UNEXPECTED END OF JSON INPUT 
+    // BUT WHEN I MAKE A CHANGE TO MY CODE (EVEN TYPING COMMENTS) AND SAVE IT THE FETCH GOES THROUGH 
+    fetch(`/cart_items/${e.target.id}`, {
+      method: 'DELETE',
+    })
+      .then(res => res.json())
+      .then(() => {
+        setCartItems(() => cartItems.filter(cartItem => cartItem.id !== e.target.id))
+      })
+  }
+
+
   if (!user.user) return (
     <h2 style={{ display: "flex", justifyContent: 'center' }}>Cart</h2>
   )
-
 
   const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
 
@@ -60,9 +80,13 @@ function CartPage(user) {
             <div>
               <h4>{cartItem.book.author}</h4>
             </div>
+            <button onClick={onRemoveClick} id={cartItem.id}>Remove from cart</button>
           </CartItem>
         ))}
       </CartItemContainer>
+      <h3>
+        {`TOTAL: $ ${cartTotalPrice}`}
+      </h3>
     </div >
   );
 }
