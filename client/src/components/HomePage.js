@@ -7,6 +7,8 @@ import styled from "styled-components";
 const SliderContainer = styled.div`
     width: 70%;
     margin: 5% 15% 10% 15%;
+    background-color: rgba(162, 208, 162, 0.333);
+    border-radius: 15px;
     
 `;
 
@@ -33,7 +35,7 @@ function HomePage() {
 
     const NextArrow = ({ onClick }) => {
         return (
-            <div className="arrow next" onClick={onClick}>
+            <div className="arrow next" onClick={onClick} style={{ backgroundColor: "rgba(162, 208, 162, 0.125)" }}>
                 <div>
                     <h1>{">"}</h1>
                 </div>
@@ -88,55 +90,6 @@ function HomePage() {
         beforeChange: (current, next) => setBookIndex3(next)
     };
 
-    // other nytimes api options:
-    // HARDCOVER NONFICTION
-    // "https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-nonfiction&api-key=y4rzw6iH1pkbmcbezTXYUYhntpmQKHSR"
-    // "https://api.nytimes.com/svc/books/v3/lists.json?list-name=young-adult-hardcover&api-key=y4rzw6iH1pkbmcbezTXYUYhntpmQKHSR"
-
-    // let navigate = useNavigate();
-
-    // NEED TO TAKE ARRAY THAT WE GET FROM NYTIMES....
-    // THEN FOR EACH ITEM IN THE ARRAY, GRAB THE BOOK FROM GOOGLE BOOKS API BASED ON ISBNS
-    // FOR EACH GOOGLE BOOKS API BOOK, GENERATE A DIV INSIDE <Slider></Slider> WITH IMAGE, BOOK TITLE, AND AUTHOR (maybe also the best-seller ranking)
-
-    // useEffect(() => {
-    //     fetch("https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=y4rzw6iH1pkbmcbezTXYUYhntpmQKHSR")
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setNytResults(data.results)
-    //         })
-    // }, [])
-
-    // useEffect(() => {
-    //     let results = []
-
-    //     // googleResults.map(result => console.log('Map Return:', result.items[0]))
-
-    //     nytResults.forEach(result => {
-    //         fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${result.book_details[0].primary_isbn10}&key=AIzaSyCfQtENQBgnBuY4pd4FJXQRWAnynBSJCXI`)
-    //             .then(res => res.json())
-    //             .then(console.log)
-    //         // .then(data => results.push(data))
-    //         // .then(data => setGoogleResults(() => [...googleResults, data]))
-    //     })
-    //     // console.log('Results', results)
-    //     // setGoogleResults(() => results)
-    //     // navigate('/')
-    // }, [nytResults])
-
-    // useEffect(() => {
-    //     fetch("https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=y4rzw6iH1pkbmcbezTXYUYhntpmQKHSR")
-    //         .then(res => res.json())
-    //         .then((data) => {
-    //             data.results.forEach(result => {
-    //                 fetch(`https://www.googleapis.com/books/v1/volumes?q=isbn:${result.isbns[0].isbn10}&key=AIzaSyD2iMrcxWXeVK4l3X93uzwsEtrvDaUzLXE`)
-    //                     .then(res => res.json())
-    //                     .then((data) => resultsArr.push(data))
-    //             })
-    //             setNytGoogleResults(() => [...nytGoogleResults, data])
-    //         })
-    // }, [])
-
     useEffect(() => {
         // Will be doing above fetches in backend (just once?)
         // Do I need a new model for books that are nyt books?
@@ -153,8 +106,8 @@ function HomePage() {
                 <h1 style={{ color: "white", fontSize: "80px", textAlign: "center", textShadow: "2px 2px black" }}>Welcome to Hopper's Books!</h1>
                 <h2 style={{ color: "white", fontSize: "60px", textAlign: "center", textShadow: "2px 2px black" }}>FREE shipping on all orders</h2>
             </BannerContainer>
+            <h2>Browse NYT Bestsellers - Fiction</h2>
             <SliderContainer>
-                <h2>Browse NYT Bestsellers - Fiction</h2>
                 <Slider {...settings1}>
                     {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
                     {googleResults.length ? googleResults.map((result, index) => {

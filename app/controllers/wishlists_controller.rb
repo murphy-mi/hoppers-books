@@ -1,5 +1,7 @@
 class WishlistsController < ApplicationController
 
+    skip_before_action :authorize
+    
     def index
         wishlists = Wishlist.all
         render json: wishlists, status: :ok

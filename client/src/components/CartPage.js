@@ -59,8 +59,7 @@ function CartPage(user) {
       })
   }
 
-
-  if (!user.user) return (
+  if (!user.user.username !== '') return (
     <h2 style={{ display: "flex", justifyContent: 'center' }}>Cart</h2>
   )
 
@@ -72,17 +71,22 @@ function CartPage(user) {
         <h2 style={{ display: "flex", justifyContent: 'center' }}>{user.user.username}'s cart</h2>
       </div>
       <CartItemContainer>
-        {userCartItems.map(cartItem => (
-          <CartItem key={cartItem.id} >
-            <div>
-              <h3>{cartItem.book.title}</h3>
-            </div>
-            <div>
-              <h4>{cartItem.book.author}</h4>
-            </div>
-            <button onClick={onRemoveClick} id={cartItem.id}>Remove from cart</button>
+        {cartItems.length !== 0
+          ? userCartItems.map(cartItem => (
+            <CartItem key={cartItem.id} >
+              <div>
+                <h3>{cartItem.book.title}</h3>
+              </div>
+              <div>
+                <h4>{cartItem.book.author}</h4>
+              </div>
+              <button onClick={onRemoveClick} id={cartItem.id}>Remove from cart</button>
+            </CartItem>
+          ))
+          : <CartItem>
+            <h1>Items in your cart will show up here.</h1>
           </CartItem>
-        ))}
+        }
       </CartItemContainer>
       <h3>
         {`TOTAL: $ ${cartTotalPrice}`}

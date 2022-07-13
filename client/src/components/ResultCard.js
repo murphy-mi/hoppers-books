@@ -4,13 +4,15 @@ import '../index.css'
 import styled from "styled-components";
 
 const Card = styled.div`
+    position: relative;
     display: inline-block;
     text-align: start;
-    margin: 1rem;
+    margin: 1.5rem;
     padding: 1rem;
     /* border-radius: 5%; */
-    max-width: 200px;
-    height: 300px;
+    /* max-width: 400px; */
+    width: 280px;
+    height: 600px;
     /* background: #2b2b2b; */
     color: #2b2b2b;
     &:hover {
@@ -25,8 +27,8 @@ const Card = styled.div`
 `;
 
 const BookPhoto = styled.img`
-    height: 150px;
-    width: 100px;
+    height: 350px;
+    width: 90%;
     box-shadow: 2px 2px 3px black;
     /* margin-top: 0.5rem; */
     /* border-radius: 5%; */
@@ -38,10 +40,6 @@ function ResultCard({ result, index, user }) {
     const [inCart, setInCart] = useState(false)
     const [bookPrice, setBookPrice] = useState(null)
     const { accessInfo, searchInfo, selfLink, volumeInfo } = result;
-
-    // console.log(result)
-    // console.log(user)
-
 
     useEffect(() => {
         const randPrice = ((Math.random() * 12) + 4)
@@ -143,9 +141,11 @@ function ResultCard({ result, index, user }) {
                     alt="book photo"
                 />
             </Link>
-            <h3>{limitChars(volumeInfo.title)}</h3>
-            <h4>{volumeInfo.authors && limitChars(volumeInfo.authors[0])}</h4>
-            <h4>{bookPrice}</h4>
+            <h2 style={{ height: "70px" }}>
+                {limitChars(volumeInfo.title)}
+            </h2>
+            <h4 style={{ fontStyle: "italic" }}>{volumeInfo.authors && limitChars(volumeInfo.authors[0])}</h4>
+            <h4>${bookPrice}</h4>
             <div className="wishlist-cart-container">
                 <button
                     onClick={onWishlistClick}

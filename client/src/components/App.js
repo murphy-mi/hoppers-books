@@ -22,7 +22,18 @@ const FooterDiv = styled.div`
 
 
 function App() {
-  const [user, setUser] = useState(null)
+  const initialUser = {
+    user: {
+      admin: false,
+      cart_items: [],
+      id: '',
+      purchases: [],
+      username: "",
+      wishlists: [],
+    }
+  }
+  const [user, setUser] = useState(initialUser)
+  console.log(user)
 
   const navigate = useNavigate()
 
@@ -41,41 +52,14 @@ function App() {
   }
 
   function onLogout() {
-    fetch("http://localhost:3000/logout", { method: "DELETE" }).then((r) => {
+    fetch(`http://localhost:3000/logout/${user.user.id}`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
-        setUser(null);
+        setUser(initialUser);
         navigate("../")
       }
     });
   }
 
-  if (!user) return (
-    <>
-      <div>
-        <div>
-          <NavBar user={user} onLogout={onLogout} />
-        </div>
-        <div className="display-page-container">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
-            <Route path="/cart" element={<CartPage user={user} />} />
-            <Route path="/browse" element={<BrowsePage user={user} />} />
-            <Route path="/browse/:name" element={<BrowsePage user={user} />} />
-            <Route path="/search" element={<SearchPage user={user} />} />
-            <Route path="/search/:name" element={<SearchPage user={user} />} />
-            <Route path="/book" element={<BookPage user={user} />} />
-          </Routes>
-        </div>
-        <FooterDiv>
-          <div style={{ display: 'inline-block', justifyContent: 'center' }}>
-            <h4>Created by Max Murphy, 2022; </h4>
-            <h4>Art by Alyssa Strasser</h4>
-          </div>
-        </FooterDiv>
-      </div>
-    </>
-  )
 
   return (
     <>
@@ -86,7 +70,7 @@ function App() {
         <div className="display-page-container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage user={user} />} />
+            <Route path="/profile" element={user.user.username !== '' ? <ProfilePage user={user} /> : null} />
             <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
             <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />
@@ -104,7 +88,7 @@ function App() {
         </FooterDiv>
       </div>
     </>
-  );
+  )
 }
 
 export default App;

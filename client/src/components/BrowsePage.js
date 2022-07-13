@@ -36,7 +36,7 @@ const Cont = styled.div`
 
 const ResultContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24%, 1fr));
   grid-auto-rows: auto;
   width: 100%;
 `;
@@ -59,18 +59,18 @@ function BrowsePage(user) {
     <ResultCard key={index} result={result} index={index} user={user} />
   ));
 
-  if (!user.user) return (
-    <>
-      <CategoryTitle>
-        <h1>
-          {isLoading ? "Loading..." : `${params.name.toUpperCase()}`}
-        </h1>
-      </CategoryTitle>
-      <Cont>
-        <ResultContainer>{renderResults}</ResultContainer>
-      </Cont>
-    </>
-  )
+  // if (!user.user) return (
+  //   <>
+  //     <CategoryTitle>
+  //       <h1>
+  //         {isLoading ? "Loading..." : `${params.name.toUpperCase()}`}
+  //       </h1>
+  //     </CategoryTitle>
+  //     <Cont>
+  //       <ResultContainer>{renderResults}</ResultContainer>
+  //     </Cont>
+  //   </>
+  // )
 
   return (
     <>

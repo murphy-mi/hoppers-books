@@ -11,19 +11,32 @@ puts "Seeding..."
 u1 = User.create(username: "hagay", password: "password", admin: true)
 u2 = User.create(username: "username", password: "password", admin: true)
 
-Book.create(title: "Star Wars I", price: 5.70, author: "Luke", genre: "Science-Fiction", image: "https://i.pinimg.com/originals/bb/84/be/bb84be317811f35a8f2134404ed5ab34.jpg" )
-Book.create(title: "Star Wars II", price: 6.30, author: "Chewbacca", genre: "Science-Fiction", image: "https://i5.walmartimages.com/asr/0c06775c-3274-48ec-b014-1ce57d3ef7de_1.f1273965ef51cbe16f4ddb83a1db1dd8.jpeg" )
-Book.create(title: "Star Wars III", price: 6.10, author: "Leia", genre: "Science-Fiction", image: "http://theassociation.blogs.com/the_association/images/2007/10/09/squatch_dunking_2.jpg" )
-Book.create(title: "Star Wars IV", price: 4.11, author: "Obi-Wan", genre: "Science-Fiction", image: "https://cdn.shopify.com/s/files/1/0068/2970/3227/products/davis_w810wicketewok_1_X.jpg?v=1566849311" )
-Book.create(title: "Star Wars V", price: 10.53, author: "Greedo", genre: "Science-Fiction", image: "https://www.si.com/.image/c_fit%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_620/MTY4MTI2MDI5MDcwOTM1MzEz/40-star-wars-sports-galleryjpg.jpg" )
+# Hardcover Nonfiction
+Book.create(title: "The Hotel Nantucket", price: 5.70, author: "Elin Hilderbrand", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316258678.jpg" )
+Book.create(title: "Sparring Partners", price: 6.30, author: "John Grisham", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780385549325.jpg" )
+Book.create(title: "Suspects", price: 6.10, author: "Danielle Steel", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9781984821676.jpg" )
+Book.create(title: "The House Across The Lake", price: 4.11, author: "Riley Sager", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593183199.jpg" )
+Book.create(title: "Escape", price: 10.53, author: "James Patterson", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316499446.jpg" )
 
-BestSeller.create(book_id: 1)
-BestSeller.create(book_id: 2)
-BestSeller.create(book_id: 3)
-BestSeller.create(book_id: 4)
-BestSeller.create(book_id: 5)
-# b1 = Book.create(title: "Where The Sidewalk Ends", author_id: a1.id, genre_id: g1.id)
-# b2 = Book.create(title: "Crash", author_id: a2.id, genre_id: g2.id)
+BestSeller.create(book_id: 1, list: "Hardcover Fiction")
+BestSeller.create(book_id: 2, list: "Hardcover Fiction")
+BestSeller.create(book_id: 3, list: "Hardcover Fiction")
+BestSeller.create(book_id: 4, list: "Hardcover Fiction")
+BestSeller.create(book_id: 5, list: "Hardcover Fiction")
+
+# Hardcover Fiction
+Book.create(title: "The Hotel Nantucket", price: 5.70, author: "Elin Hilderbrand", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316258678.jpg" )
+Book.create(title: "Sparring Partners", price: 6.30, author: "John Grisham", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780385549325.jpg" )
+Book.create(title: "Suspects", price: 6.10, author: "Danielle Steel", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9781984821676.jpg" )
+Book.create(title: "The House Across The Lake", price: 4.11, author: "Riley Sager", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593183199.jpg" )
+Book.create(title: "Star Wars V", price: 10.53, author: "James Patterson", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316499446.jpg" )
+
+BestSeller.create(book_id: 6, list: "Hardcover Nonfiction")
+BestSeller.create(book_id: 7, list: "Hardcover Nonfiction")
+BestSeller.create(book_id: 8, list: "Hardcover Nonfiction")
+BestSeller.create(book_id: 9, list: "Hardcover Nonfiction")
+BestSeller.create(book_id: 10, list: "Hardcover Nonfiction")
+
 
 # w1 = Wishlist.create(book_id: b1.id, user_id: u1.id)
 # w2 = Wishlist.create(book_id: b2.id, user_id: u1.id)

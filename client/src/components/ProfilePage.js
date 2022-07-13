@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 function ProfilePage(user) {
     const [wishlists, setWishlists] = useState([])
 
+    console.log("Profile User", user)
+
 
     useEffect(() => {
         fetch('http://localhost:3000/wishlists')
@@ -10,7 +12,7 @@ function ProfilePage(user) {
             .then(setWishlists)
     }, [])
 
-    if (!user.user) return <></>
+    // if (!user.user) return <></>
 
     const userWishlists = wishlists.filter(wishlist => wishlist.user_id === user.user.id)
 

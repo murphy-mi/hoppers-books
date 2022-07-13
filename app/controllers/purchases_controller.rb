@@ -1,5 +1,7 @@
 class PurchasesController < ApplicationController
 
+    skip_before_action :authorize
+
     def index
         purchases = Purchase.all
         render json: purchases, status: :ok

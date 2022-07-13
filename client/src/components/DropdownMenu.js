@@ -25,14 +25,14 @@ function DropdownMenu(props) {
 
     const dropDownCategories = categoryArr.map(category => {
         return (
-            <a
+            <Link
                 className="link"
                 key={category}
-                href={`http://localhost:3000/browse/${category}`}
+                to={`/browse/${category}`}
             >
                 {category}
                 {/* {category.substring(0, 1).toUpperCase() === + category.substring(1, category.length)} */}
-            </a >
+            </Link >
         )
     })
     return (
