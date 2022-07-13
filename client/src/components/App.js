@@ -8,6 +8,17 @@ import ProfilePage from "./ProfilePage.js";
 import CartPage from "./CartPage.js";
 import BookPage from "./BookPage.js";
 import SearchPage from "./SearchPage.js";
+import styled from "styled-components";
+
+const FooterDiv = styled.div`
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    background-color: #484a4d;
+    display:flex;
+    justify-content: center;
+    color: white;
+`;
 
 
 function App() {
@@ -56,6 +67,12 @@ function App() {
             <Route path="/book" element={<BookPage user={user} />} />
           </Routes>
         </div>
+        <FooterDiv>
+          <div style={{ display: 'inline-block', justifyContent: 'center' }}>
+            <h4>Created by Max Murphy, 2022; </h4>
+            <h4>Art by Alyssa Strasser</h4>
+          </div>
+        </FooterDiv>
       </div>
     </>
   )
@@ -79,6 +96,12 @@ function App() {
             <Route path="/book" element={<BookPage user={user} />} />
           </Routes>
         </div>
+        <FooterDiv>
+          <div>
+            <h4>Created by Max Murphy, 2022; </h4>
+            <h4>Art by Alyssa Strasser</h4>
+          </div>
+        </FooterDiv>
       </div>
     </>
   );

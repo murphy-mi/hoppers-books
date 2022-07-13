@@ -5,8 +5,9 @@ import Slider from "react-slick"
 import styled from "styled-components";
 
 const SliderContainer = styled.div`
-    width: 80%;
-    margin: 100px;
+    width: 70%;
+    margin: 5% 15% 10% 15%;
+    
 `;
 
 const BannerContainer = styled.div`
@@ -17,13 +18,16 @@ const BannerContainer = styled.div`
     background-size: cover;
     display: grid;
     place-items: center;
-    padding: 70px 0 70px 0;
+    padding: 400px 0 400px 0;
+    box-shadow: inset 5px 5px 10px 4px #000000;
 `;
 
 function HomePage() {
     // const [nytResults, setNytResults] = useState([])
     const [googleResults, setGoogleResults] = useState([])
-    const [bookIndex, setBookIndex] = useState(0)
+    const [bookIndex1, setBookIndex1] = useState(0)
+    const [bookIndex2, setBookIndex2] = useState(0)
+    const [bookIndex3, setBookIndex3] = useState(0)
 
     console.log('Google Results:', googleResults)
 
@@ -44,7 +48,7 @@ function HomePage() {
         )
     }
 
-    const settings = {
+    const settings1 = {
         dots: true,
         infinite: true,
         lazyLoad: true,
@@ -55,7 +59,33 @@ function HomePage() {
         slidesToScroll: 1,
         nextArrow: <NextArrow />,
         prevArrow: <PreviousArrow />,
-        beforeChange: (current, next) => setBookIndex(next)
+        beforeChange: (current, next) => setBookIndex1(next)
+    };
+    const settings2 = {
+        dots: true,
+        infinite: true,
+        lazyLoad: true,
+        speed: 300,
+        centerMode: true,
+        centerPadding: 0,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PreviousArrow />,
+        beforeChange: (current, next) => setBookIndex2(next)
+    };
+    const settings3 = {
+        dots: true,
+        infinite: true,
+        lazyLoad: true,
+        speed: 300,
+        centerMode: true,
+        centerPadding: 0,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        nextArrow: <NextArrow />,
+        prevArrow: <PreviousArrow />,
+        beforeChange: (current, next) => setBookIndex3(next)
     };
 
     // other nytimes api options:
@@ -120,16 +150,49 @@ function HomePage() {
     return (
         <>
             <BannerContainer >
-                <h2>Welcome</h2>
+                <h1 style={{ color: "white", fontSize: "80px", textAlign: "center", textShadow: "2px 2px black" }}>Welcome to Hopper's Books!</h1>
+                <h2 style={{ color: "white", fontSize: "60px", textAlign: "center", textShadow: "2px 2px black" }}>FREE shipping on all orders</h2>
             </BannerContainer>
             <SliderContainer>
                 <h2>Browse NYT Bestsellers - Fiction</h2>
-                <Slider {...settings}>
+                <Slider {...settings1}>
                     {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
                     {googleResults.length ? googleResults.map((result, index) => {
                         return (
-                            <div className={index === bookIndex ? "slide activeSlide" : "slide"}>
-                                <img src={result.image} />
+                            <div className={index === bookIndex1 ? "slide activeSlide" : "slide"}>
+                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
+                                <h3>{result.title}</h3>
+                                <h4>{result.author}</h4>
+                                {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
+                            </div>
+                        )
+                    }) : null}
+                </Slider>
+            </SliderContainer>
+            <SliderContainer>
+                <h2>Browse NYT Bestsellers - Nonfiction</h2>
+                <Slider {...settings2}>
+                    {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
+                    {googleResults.length ? googleResults.map((result, index) => {
+                        return (
+                            <div className={index === bookIndex2 ? "slide activeSlide" : "slide"}>
+                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
+                                <h3>{result.title}</h3>
+                                <h4>{result.author}</h4>
+                                {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
+                            </div>
+                        )
+                    }) : null}
+                </Slider>
+            </SliderContainer>
+            <SliderContainer>
+                <h2>Browse NYT Bestsellers - Young Adult</h2>
+                <Slider {...settings3}>
+                    {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
+                    {googleResults.length ? googleResults.map((result, index) => {
+                        return (
+                            <div className={index === bookIndex3 ? "slide activeSlide" : "slide"}>
+                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
                                 <h3>{result.title}</h3>
                                 <h4>{result.author}</h4>
                                 {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
