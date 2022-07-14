@@ -59,7 +59,7 @@ function CartPage(user) {
       })
   }
 
-  if (!user.user.username !== '') return (
+  if (user.username === '') return (
     <h2 style={{ display: "flex", justifyContent: 'center' }}>Cart</h2>
   )
 

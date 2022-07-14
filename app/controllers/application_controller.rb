@@ -4,11 +4,21 @@ class ApplicationController < ActionController::API
     rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
     before_action :authorize
-    
+
+    # def count
+    #     session[:count] = (session[:count] || 0) + 1
+    #     render json: {count: session[:count]}
+    # end
+
     private
 
+
     def authorize
+        session[:test] = "test"
+
         @current_user = User.find_by(id: session[:user_id])
+
+        # byebug
 
         render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
     end

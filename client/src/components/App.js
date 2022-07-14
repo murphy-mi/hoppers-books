@@ -23,14 +23,12 @@ const FooterDiv = styled.div`
 
 function App() {
   const initialUser = {
-    user: {
-      admin: false,
-      cart_items: [],
-      id: '',
-      purchases: [],
-      username: "",
-      wishlists: [],
-    }
+    admin: false,
+    cart_items: [],
+    id: '',
+    purchases: [],
+    username: "",
+    wishlists: [],
   }
   const [user, setUser] = useState(initialUser)
   console.log(user)
@@ -41,7 +39,7 @@ function App() {
     // auto-login
     fetch("http://localhost:3000/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then(data => setUser(data));
       }
     });
   }, []);
@@ -52,7 +50,7 @@ function App() {
   }
 
   function onLogout() {
-    fetch(`http://localhost:3000/logout/${user.user.id}`, { method: "DELETE" }).then((r) => {
+    fetch(`http://localhost:3000/logout`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(initialUser);
         navigate("../")
@@ -66,11 +64,12 @@ function App() {
       <div>
         <div>
           <NavBar user={user} onLogout={onLogout} />
+          {/* <p></p> */}
         </div>
         <div className="display-page-container">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={user.user.username !== '' ? <ProfilePage user={user} /> : null} />
+            <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
             <Route path="/cart" element={<CartPage user={user} />} />
             <Route path="/browse" element={<BrowsePage user={user} />} />

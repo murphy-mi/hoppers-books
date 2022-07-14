@@ -47,5 +47,6 @@ group :development do
   gem "dotenv-rails"
 end
 
+gem "byebug", "~> 9.0.6"
 
 gem "active_model_serializers", "~> 0.10.13"

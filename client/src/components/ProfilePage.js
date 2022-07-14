@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function ProfilePage(user) {
+function ProfilePage({ user }) {
     const [wishlists, setWishlists] = useState([])
 
     console.log("Profile User", user)
@@ -12,16 +12,16 @@ function ProfilePage(user) {
             .then(setWishlists)
     }, [])
 
-    // if (!user.user) return <></>
+    if (!user.username) return <></>
 
-    const userWishlists = wishlists.filter(wishlist => wishlist.user_id === user.user.id)
+    const userWishlists = wishlists.filter(wishlist => wishlist.user_id === user.id)
 
     // console.log(userWishlists.map(w ishlist => wishlist.book.title.toString()))
 
     return (
         <div className="profile-page-container">
             <div>
-                <h2 style={{ display: "flex", justifyContent: 'center' }}>Hello, {user.user.username}!</h2>
+                <h2 style={{ display: "flex", justifyContent: 'center' }}>Hello, {user.username}!</h2>
             </div>
             <div className="account-wishlist-container">
                 <div>

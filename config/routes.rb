@@ -7,11 +7,14 @@ Rails.application.routes.draw do
   resources :purchases, only: [:index, :show]
   resources :best_sellers, only: [:index]
 
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show, :create]
+
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
-  delete "/logout/:id", to: "sessions#destroy"
+  delete "/logout", to: "sessions#destroy"
+
+  # get "/count", to: "application#count"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")

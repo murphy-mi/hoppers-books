@@ -28,11 +28,11 @@ function NavBar({ user, onLogout }) {
             <div className="navbar-nav-right">
                 <NavItem className="link" name="/cart" icon="🛒" />
                 {
-                    user ? <NavItem className="link" name="/profile" icon="👤" /> : <></>
+                    user.username ? <NavItem className="link" name="/profile" icon="👤" /> : <></>
                 }
                 {
-                    user.user.username !== ''
-                        ? <h3 className="link" style={{ color: 'black' }} icon="Logout">Logout</h3>
+                    user.username !== ''
+                        ? <h3 className="link" style={{ color: 'black' }} icon="Logout" onClick={onLogout}>Logout</h3>
                         : <Link className="link" to="/login" ><h3>Login</h3></Link>
                 }
             </div >
