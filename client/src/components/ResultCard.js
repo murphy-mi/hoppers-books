@@ -149,11 +149,12 @@ function ResultCard({ result, index, user }) {
             <h4>${bookPrice}</h4>
             <div className="wishlist-cart-container">
                 <button
+                    className="wishlist-add-button"
                     onClick={onWishlistClick}
                 >
                     {!inWishlist ? "Add to Wishlist" : "Remove from Wishlist"}
                 </button>
-                <button
+                <button className="cart-add-button"
                     onClick={onCartClick}
                 >
                     {!inCart ? "Add to Cart" : "Remove from Cart"}

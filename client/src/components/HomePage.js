@@ -1,22 +1,23 @@
 import "../App.css"
 // import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Slider from "react-slick"
 import styled from "styled-components";
+import CarouselContainer from "./CarouselContainer"
 
-const SliderContainer = styled.div`
-    width: 70%;
-    margin: 5% 15% 10% 15%;
-    background-color: rgba(162, 208, 162, 0.333);
-    border-radius: 15px;
-    
+
+const NytListTitle = styled.div`
+    position: relative;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 20px;
+    margin-top: 100px;
+    margin-bottom: 0;
 `;
 
 const BannerContainer = styled.div`
     width: auto;
     height: 100%;
     background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1514823529749-16594073828c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
-    /* background-image: url("https://images.unsplash.com/photo-1514823529749-16594073828c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"); */
     background-position: center;
     background-size: cover;
     display: grid;
@@ -26,11 +27,8 @@ const BannerContainer = styled.div`
 `;
 
 function HomePage() {
-    // const [nytResults, setNytResults] = useState([])
     const [googleResults, setGoogleResults] = useState([])
-    const [bookIndex1, setBookIndex1] = useState(0)
-    const [bookIndex2, setBookIndex2] = useState(0)
-    const [bookIndex3, setBookIndex3] = useState(0)
+
 
     console.log('Google Results:', googleResults)
 
@@ -51,51 +49,7 @@ function HomePage() {
         )
     }
 
-    const settings1 = {
-        dots: true,
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        centerMode: true,
-        centerPadding: 0,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PreviousArrow />,
-        beforeChange: (current, next) => setBookIndex1(next)
-    };
-    const settings2 = {
-        dots: true,
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        centerMode: true,
-        centerPadding: 0,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PreviousArrow />,
-        beforeChange: (current, next) => setBookIndex2(next)
-    };
-    const settings3 = {
-        dots: true,
-        infinite: true,
-        lazyLoad: true,
-        speed: 300,
-        centerMode: true,
-        centerPadding: 0,
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        nextArrow: <NextArrow />,
-        prevArrow: <PreviousArrow />,
-        beforeChange: (current, next) => setBookIndex3(next)
-    };
-
     useEffect(() => {
-        // Will be doing above fetches in backend (just once?)
-        // Do I need a new model for books that are nyt books?
-        // Would then separate into sections by their genres (ex: genre: "hardcover-fiction")
-        // With that, we would be able to add to cart much easier
         fetch('http://localhost:3000/best_sellers')
             .then(res => res.json())
             .then(data => setGoogleResults(data))
@@ -107,54 +61,12 @@ function HomePage() {
                 <h1 style={{ color: "white", fontSize: "80px", textAlign: "center", textShadow: "2px 2px black" }}>Welcome to Hopper's Books!</h1>
                 <h2 style={{ color: "white", fontSize: "60px", textAlign: "center", textShadow: "2px 2px black" }}>FREE shipping on all orders</h2>
             </BannerContainer>
-            <h2>Browse NYT Bestsellers - Fiction</h2>
-            <SliderContainer>
-                <Slider {...settings1}>
-                    {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
-                    {googleResults.length ? googleResults.map((result, index) => {
-                        return (
-                            <div className={index === bookIndex1 ? "slide activeSlide" : "slide"}>
-                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
-                                <h3>{result.title}</h3>
-                                <h4>{result.author}</h4>
-                                {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
-                            </div>
-                        )
-                    }) : null}
-                </Slider>
-            </SliderContainer>
-            <SliderContainer>
-                <h2>Browse NYT Bestsellers - Nonfiction</h2>
-                <Slider {...settings2}>
-                    {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
-                    {googleResults.length ? googleResults.map((result, index) => {
-                        return (
-                            <div className={index === bookIndex2 ? "slide activeSlide" : "slide"}>
-                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
-                                <h3>{result.title}</h3>
-                                <h4>{result.author}</h4>
-                                {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
-                            </div>
-                        )
-                    }) : null}
-                </Slider>
-            </SliderContainer>
-            <SliderContainer>
-                <h2>Browse NYT Bestsellers - Young Adult</h2>
-                <Slider {...settings3}>
-                    {/* REACT-SLICK CAROUSEL WORKS!!! JUST BREAKING WITH THE DATA WE'RE PULLING */}
-                    {googleResults.length ? googleResults.map((result, index) => {
-                        return (
-                            <div className={index === bookIndex3 ? "slide activeSlide" : "slide"}>
-                                <img src={result.image} style={{ boxShadow: "0 10px 6px -6px black" }} />
-                                <h3>{result.title}</h3>
-                                <h4>{result.author}</h4>
-                                {/* <img style={{ width: "50px", height: "80px" }} src={result.items[0].volumeInfo.imageLinks.smallThumbnail} alt={result.items[0].volumeInfo.title} /> */}
-                            </div>
-                        )
-                    }) : null}
-                </Slider>
-            </SliderContainer>
+            <NytListTitle>Browse NYT Bestsellers - Fiction</NytListTitle>
+            <CarouselContainer googleResults={googleResults} />
+            <NytListTitle>Browse NYT Bestsellers - Nonfiction</NytListTitle>
+            <CarouselContainer googleResults={googleResults} />
+            <NytListTitle>Browse NYT Bestsellers - Young Adult</NytListTitle>
+            <CarouselContainer googleResults={googleResults} />
         </>
     );
 }

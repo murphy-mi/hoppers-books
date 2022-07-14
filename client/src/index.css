@@ -48,10 +48,6 @@ ul {
   margin: 0;
 }
 
-/* 
-.search {
-  align-self: center;
-} */
 
 .navbar-nav-left {
   justify-content: space-around;
@@ -183,9 +179,27 @@ ul {
 /* ResultCard */
 
 .wishlist-cart-container {
-  display: grid;
-  position: absolute;
+  display: relative;
+  text-align: start;
   bottom: 0;
+}
+
+.wishlist-add-button {
+  background-color: #093e82;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: auto;
+  border: 1px solid white;
+}
+
+.cart-add-button {
+  background-color: #1d6e44;
+  color: white;
+  border-radius: 5px;
+  height: 40px;
+  width: auto;
+  border: 1px solid white;
 }
 
 /* SearchBar */
@@ -202,6 +216,7 @@ ul {
   flex-direction: row;
   height: 80px;
 }
+
 
 .search-field {
   font-size: 35px;
@@ -237,14 +252,15 @@ ul {
 }
 
 .slide {
-  transform: scale(0.2);
+  transform: scale(0.7);
   transition: transform 300ms;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 .activeSlide {
   transform: scale(1.1);
   opacity: 1;
+  height: 700px;
 }
 
 .arrow {

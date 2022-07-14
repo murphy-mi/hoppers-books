@@ -82,7 +82,7 @@ function App() {
         </div>
         <FooterDiv>
           <div>
-            <h4>Created by Max Murphy, 2022; </h4>
+            <h4>Created by Max Murphy, 2022 </h4>
             <h4>Art by Alyssa Strasser</h4>
           </div>
         </FooterDiv>
