@@ -26,11 +26,12 @@ const BannerContainer = styled.div`
     box-shadow: inset 5px 5px 10px 4px #000000;
 `;
 
-function HomePage() {
-    const [googleResults, setGoogleResults] = useState([])
+function HomePage({ user }) {
+    const [fictionResults, setFictionResults] = useState([])
+    const [nonFictionResults, setNonFictionResults] = useState([])
+    const [youngAdultResults, setYoungAdultResults] = useState([])
 
-
-    console.log('Google Results:', googleResults)
+    console.log(nonFictionResults)
 
     const NextArrow = ({ onClick }) => {
         return (
@@ -52,8 +53,30 @@ function HomePage() {
     useEffect(() => {
         fetch('http://localhost:3000/best_sellers')
             .then(res => res.json())
-            .then(data => setGoogleResults(data))
+            .then(data => {
+                resultCategories(data)
+            })
+
     }, [])
+
+    function resultCategories(results) {
+        let fiction = []
+        let nonfiction = []
+        let youngAdult = []
+
+        results.forEach(result => {
+            if (result.genre === "Hardcover Fiction") {
+                fiction.push(result)
+            } else if (result.genre === "Hardcover Nonfiction") {
+                nonfiction.push(result)
+            } else {
+                youngAdult.push(result)
+            }
+        })
+        setFictionResults(fiction)
+        setNonFictionResults(nonfiction)
+        setYoungAdultResults(youngAdult)
+    }
 
     return (
         <>
@@ -62,11 +85,11 @@ function HomePage() {
                 <h2 style={{ color: "white", fontSize: "60px", textAlign: "center", textShadow: "2px 2px black" }}>FREE shipping on all orders</h2>
             </BannerContainer>
             <NytListTitle>Browse NYT Bestsellers - Fiction</NytListTitle>
-            <CarouselContainer googleResults={googleResults} />
+            <CarouselContainer books={fictionResults} user={user} />
             <NytListTitle>Browse NYT Bestsellers - Nonfiction</NytListTitle>
-            <CarouselContainer googleResults={googleResults} />
+            <CarouselContainer books={nonFictionResults} user={user} />
             <NytListTitle>Browse NYT Bestsellers - Young Adult</NytListTitle>
-            <CarouselContainer googleResults={googleResults} />
+            <CarouselContainer books={youngAdultResults} user={user} />
         </>
     );
 }

@@ -68,7 +68,7 @@ function App() {
         </div>
         <div className="display-page-container">
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage user={user} />} />
             <Route path="/profile" element={<ProfilePage user={user} />} />
             <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
             <Route path="/cart" element={<CartPage user={user} />} />

@@ -45,7 +45,7 @@ function BrowsePage(user) {
   const [results, setResults] = useState({ items: [] })
   const [isLoading, setIsLoading] = useState(false)
   const params = useParams()
-  console.log(user)
+  console.log(results)
 
   useEffect(() => {
     setIsLoading(true)
@@ -55,9 +55,10 @@ function BrowsePage(user) {
     setIsLoading(false)
   }, [params])
 
-  const renderResults = results.items.map((result, index) => (
-    <ResultCard key={index} result={result} index={index} user={user} />
-  ));
+  const renderResults = results.items.filter(result => result.volumeInfo.imageLinks)
+    .map((result, index) => (
+      <ResultCard key={index} result={result} index={index} user={user} />
+    ));
 
   return (
     <>

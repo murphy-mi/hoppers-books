@@ -12,13 +12,8 @@ const SliderContainer = styled.div`
     border-radius: 15px;  
 `;
 
-function CarouselContainer({ googleResults }) {
-    // Get googleResults specific to list type
-    const [inCart, setInCart] = useState(false)
-    const [inWishlist, setInWishlist] = useState(false)
+function CarouselContainer({ books, user }) {
     const [bookIndex, setBookIndex] = useState(0)
-
-    console.log('Google Results:', googleResults)
 
     const NextArrow = ({ onClick }) => {
         return (
@@ -38,7 +33,7 @@ function CarouselContainer({ googleResults }) {
     }
 
     const settings = {
-        // dots: true,
+        dots: true,
         infinite: true,
         lazyLoad: true,
         adaptiveHeight: true,
@@ -52,27 +47,12 @@ function CarouselContainer({ googleResults }) {
         beforeChange: (current, next) => setBookIndex(next)
     };
 
-    function onCartClick() {
-        setInCart(!inCart)
-    }
-
-    function onWishlistClick() {
-        setInWishlist(!inWishlist)
-    }
-    // FETCH BEST SELLERS WITH SPECIFIC LIST TYPE
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/best_sellers')
-    //         .then(res => res.json())
-    //         .then(data => setGoogleResults(data))
-    //     // Filter through, returning only the bestsellers with a certain list type... passed down?
-    // }, [])
-
     return (
         <SliderContainer>
             <Slider {...settings}>
-                {googleResults.length ? googleResults.map((result, index) => {
+                {books.length ? books.map((result, index) => {
                     return (
-                        <CarouselItem result={result} index={index} bookIndex={bookIndex} />
+                        <CarouselItem result={result} index={index} bookIndex={bookIndex} user={user} />
                     )
                 }) : null}
             </Slider>
