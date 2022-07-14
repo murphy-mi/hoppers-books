@@ -59,19 +59,6 @@ function BrowsePage(user) {
     <ResultCard key={index} result={result} index={index} user={user} />
   ));
 
-  // if (!user.user) return (
-  //   <>
-  //     <CategoryTitle>
-  //       <h1>
-  //         {isLoading ? "Loading..." : `${params.name.toUpperCase()}`}
-  //       </h1>
-  //     </CategoryTitle>
-  //     <Cont>
-  //       <ResultContainer>{renderResults}</ResultContainer>
-  //     </Cont>
-  //   </>
-  // )
-
   return (
     <>
       <CategoryTitle>

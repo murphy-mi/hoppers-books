@@ -40,6 +40,7 @@ function ResultCard({ result, index, user }) {
     const [inCart, setInCart] = useState(false)
     const [bookPrice, setBookPrice] = useState(null)
     const { accessInfo, searchInfo, selfLink, volumeInfo } = result;
+    console.log(volumeInfo)
 
     useEffect(() => {
         const randPrice = ((Math.random() * 12) + 4)
@@ -56,7 +57,7 @@ function ResultCard({ result, index, user }) {
             price: bookPrice,
             author: volumeInfo.authors[0] ? volumeInfo.authors[0] : "",
             genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "",
-            image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+            image: volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
         }
         console.log(bookObj)
 
@@ -95,7 +96,7 @@ function ResultCard({ result, index, user }) {
             price: bookPrice,
             author: volumeInfo.authors[0] ? volumeInfo.authors[0] : "N/A",
             genre: volumeInfo.categories[0] ? volumeInfo.categories[0] : "N/A",
-            image: volumeInfo.imageLinks.smallThumbnail ? volumeInfo.imageLinks.smallThumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
+            image: volumeInfo.imageLinks.thumbnail ? volumeInfo.imageLinks.thumbnail : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
         }
         fetch("http://localhost:3000/books", {
             method: "POST",
@@ -135,7 +136,7 @@ function ResultCard({ result, index, user }) {
                 <BookPhoto
                     src={
                         volumeInfo.imageLinks
-                            ? volumeInfo.imageLinks.smallThumbnail
+                            ? volumeInfo.imageLinks.thumbnail
                             : "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg"
                     }
                     alt="book photo"

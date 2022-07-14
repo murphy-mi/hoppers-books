@@ -36,7 +36,7 @@ const Cont = styled.div`
 
 const ResultContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(24%, 1fr));
   grid-auto-rows: auto;
   width: 100%;
 `;
@@ -45,11 +45,11 @@ function BrowsePage(user) {
     const [results, setResults] = useState({ items: [] })
     const [isLoading, setIsLoading] = useState(false)
     const params = useParams()
-    console.log(user)
+    console.log(params)
 
     useEffect(() => {
         setIsLoading(true)
-        fetch(`https://www.googleapis.com/books/v1/volumes?q=${params.name}+subject&printType=books&maxResults=40&key=AIzaSyCfQtENQBgnBuY4pd4FJXQRWAnynBSJCXI`)
+        fetch(`https://www.googleapis.com/books/v1/volumes?q=${params.name}&printType=books&maxResults=40&key=AIzaSyCfQtENQBgnBuY4pd4FJXQRWAnynBSJCXI`)
             .then(res => res.json())
             .then(setResults)
         setIsLoading(false)
@@ -58,19 +58,6 @@ function BrowsePage(user) {
     const renderResults = results.items.map((result, index) => (
         <ResultCard key={index} result={result} index={index} user={user} />
     ));
-
-    if (!user.user) return (
-        <>
-            <CategoryTitle>
-                <h1>
-                    {isLoading ? "Loading..." : `${params.name.toUpperCase()}`}
-                </h1>
-            </CategoryTitle>
-            <Cont>
-                <ResultContainer>{renderResults}</ResultContainer>
-            </Cont>
-        </>
-    )
 
     return (
         <>

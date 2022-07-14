@@ -15,12 +15,13 @@ const SliderContainer = styled.div`
 const BannerContainer = styled.div`
     width: auto;
     height: 100%;
-    background-image: url("https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80");
+    background:linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.5)), url("https://images.unsplash.com/photo-1514823529749-16594073828c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+    /* background-image: url("https://images.unsplash.com/photo-1514823529749-16594073828c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"); */
     background-position: center;
     background-size: cover;
     display: grid;
     place-items: center;
-    padding: 400px 0 400px 0;
+    padding: 300px 0 300px 0;
     box-shadow: inset 5px 5px 10px 4px #000000;
 `;
 
@@ -35,17 +36,17 @@ function HomePage() {
 
     const NextArrow = ({ onClick }) => {
         return (
-            <div className="arrow next" onClick={onClick} style={{ backgroundColor: "rgba(162, 208, 162, 0.125)" }}>
+            <div className="arrow next" onClick={onClick} style={{ backgroundColor: "rgba(162, 208, 162, 0.02)" }}>
                 <div>
-                    <h1>{">"}</h1>
+                    <h1 style={{ fontSize: "150px" }}>{">"}</h1>
                 </div>
             </div>
         )
     }
     const PreviousArrow = ({ onClick }) => {
         return (
-            <div className="arrow previous" onClick={onClick}>
-                <h1>{"<"}</h1>
+            <div className="arrow previous" onClick={onClick} style={{ backgroundColor: "rgba(162, 208, 162, 0.02)" }}>
+                <h1 style={{ fontSize: "150px" }}>{"<"}</h1>
             </div>
         )
     }
@@ -154,7 +155,6 @@ function HomePage() {
                     }) : null}
                 </Slider>
             </SliderContainer>
-
         </>
     );
 }

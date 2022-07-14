@@ -35,11 +35,6 @@ function ProfilePage(user) {
                 <div>
                     <h4>Purchases</h4>
                 </div>
-                <div>
-                    <h4>Account</h4>
-                    {/* <h3>Reset Password</h3> */}
-                    {/* Reset password, add email address? */}
-                </div>
             </div>
         </div>
     );
