@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import frogPeek from "../images/frog-peek.png"
+
 
 const CartItemContainer = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
-  align-items: center;
+  margin-left: 20%;
+  align-items: center; 
+  min-height: 400px;
+  width: 60%;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+`;
+const FrogImage = styled.img`
+  width: 500px;
+  height: 500px;
+  z-index: 3;
+  float: left;
+  position: relative;
+  left: -140px;
+  /* margin-left: 0; */
 `;
 
 const CartItem = styled.a`
   display: flex;
+  justify-content: space-between;
   margin: 1rem;
   border-radius: 15px;
-  height: 75px;
+  height: 125px;
   width: 50%;
   /* background: #2b2b2b; */
   color: #2b2b2b;
@@ -30,8 +49,10 @@ const CartItem = styled.a`
 `;
 
 function CartPage(user) {
+  let navigate = useNavigate()
   const [cartItems, setCartItems] = useState([])
   const [cartTotalPrice, setCartTotalPrice] = useState(0.00)
+  const [removedFromCart, setRemovedFromCart] = useState([])
   console.log(cartItems)
 
   useEffect(() => {
@@ -42,20 +63,41 @@ function CartPage(user) {
 
   useEffect(() => {
     let totalPrice = 0.00;
-    cartItems.forEach((cartItem) => totalPrice += cartItem.price)
+    cartItems.forEach((cartItem) => totalPrice += cartItem.book.price)
     setCartTotalPrice(totalPrice)
   }, [cartItems])
 
+  function onCheckoutClick(e) {
+    const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
+    userCartItems.forEach((cartItem) => {
+      fetch(`http://localhost:3000/purchases`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ book_id: cartItem.book_id, user_id: user.user.id })
+      })
+        .then(res => res.json())
+        .then(() => {
+          fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
+            method: 'DELETE',
+          })
+            .then(() => {
+              fetch('http://localhost:3000/cart_items')
+                .then(res => res.json())
+                .then(setCartItems)
+            })
+        })
+    })
+    navigate("../profile")
+  }
+
   function onRemoveClick(e) {
-    e.preventDefault();
-    // GETTING UNCAUGHT (IN PROMISE) SYNTAXERROR: UNEXPECTED END OF JSON INPUT 
-    // BUT WHEN I MAKE A CHANGE TO MY CODE (EVEN TYPING COMMENTS) AND SAVE IT THE FETCH GOES THROUGH 
     fetch(`http://localhost:3000/cart_items/${e.target.id}`, {
       method: 'DELETE',
     })
-      .then(res => res.json())
       .then(() => {
-        setCartItems(() => cartItems.filter(cartItem => cartItem.id !== e.target.id))
+        fetch('http://localhost:3000/cart_items')
+          .then(res => res.json())
+          .then(setCartItems)
       })
   }
 
@@ -64,33 +106,41 @@ function CartPage(user) {
   )
 
   const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
+    .filter(cartItem => !removedFromCart.includes(cartItem.id))
 
   return (
     <div>
       <div>
-        <h2 style={{ display: "flex", justifyContent: 'center' }}>{user.user.username}'s cart</h2>
+        <h2 style={{ display: "flex", justifyContent: 'center', fontSize: "45px" }}>{user.user.username}'s cart</h2>
       </div>
-      <CartItemContainer>
-        {cartItems.length !== 0
-          ? userCartItems.map(cartItem => (
-            <CartItem key={cartItem.id} >
-              <div>
-                <h3>{cartItem.book.title}</h3>
-              </div>
-              <div>
-                <h4>{cartItem.book.author}</h4>
-              </div>
-              <button onClick={onRemoveClick} id={cartItem.id}>Remove from cart</button>
+      <div style={{ display: "flex", justifyContent: 'center' }}>
+        <CartItemContainer>
+          {cartItems.length !== 0
+            ? userCartItems.map(cartItem => (
+              <CartItem key={cartItem.id} >
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: 'start' }}>
+                  <h2 style={{ display: "flex", justifyContent: 'start' }}>{cartItem.book.title}</h2>
+                  <h4 style={{ display: "flex", justifyContent: 'start' }}>{cartItem.book.author}</h4>
+                </div>
+                <div>
+                  <button className="remove-cart-item-button" onClick={onRemoveClick} id={cartItem.id}>Remove from cart</button>
+                  <h4>{`$${cartItem.book.price}`}</h4>
+                </div>
+              </CartItem >
+            ))
+            : <CartItem>
+              <h1 style={{ display: "flex", justifyContent: 'center' }}>Items in your cart will show up here.</h1>
             </CartItem>
-          ))
-          : <CartItem>
-            <h1>Items in your cart will show up here.</h1>
-          </CartItem>
-        }
-      </CartItemContainer>
-      <h3>
-        {`TOTAL: $ ${cartTotalPrice}`}
-      </h3>
+          }
+        </CartItemContainer >
+        <FrogImage src={frogPeek} />
+      </div>
+      <div style={{ display: "flex", justifyContent: 'space-between', marginLeft: "22%", width: "60%", marginBottom: "20%" }}>
+        <h3>
+          {`TOTAL: $ ${cartTotalPrice}`}
+        </h3>
+        <button className="checkout-button" onClick={onCheckoutClick}>Checkout</button>
+      </div>
     </div >
   );
 }

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show, :create]
   resources :cart_items, except: [:update]
   resources :wishlists, only: [:index, :show, :create]
-  resources :purchases, only: [:index, :show]
+  resources :purchases, only: [:index, :show, :create]
   resources :best_sellers, only: [:index]
 
   resources :users, only: [:index, :show, :create]
