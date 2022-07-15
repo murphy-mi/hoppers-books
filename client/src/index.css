@@ -42,6 +42,10 @@ ul {
   padding: 0;
 }
 
+.link:hover {
+  text-decoration: underline;
+}
+
 
 .site-title {
   text-decoration: none;
@@ -57,21 +61,28 @@ ul {
   align-self: end;
 }
 
-/* 
+.nav-item {
+  padding-top: 5px;
+  margin: 0 35px 0 35px;
+}
+
 .navbar-nav-right {
   width: 40%;
   height: 200px;
   display: flex;
   justify-content: flex-end;
   align-self: end;
-} */
+  margin-right: 200px;
+  margin-top: 10px;
+}
 
 /* Icon Button */
 .icon-button {
   --button-size: calc(var(--nav-size) * 0.5);
-  width: var(--button-size);
-  height: var(--button-size);
-  background-color: #484a4d;
+  width: 55px;
+  height: 55px;
+  background-color: hsl(199, 100%, 97%);
+  border: solid 1px rgb(26, 44, 98);
   border-radius: 20%;
   padding: 5px;
   margin: 2px;
@@ -96,6 +107,7 @@ ul {
 #dropdown-container {
   position: relative;
   display: inline-block;
+  padding-top: 15px;
   height: 100px;
 }
 
@@ -284,6 +296,7 @@ ul {
 
 .arrow h1:hover {
   color: green;
+  filter: brightness(1.2);
 }
 
 .next {
@@ -309,6 +322,7 @@ ul {
 
 .remove-cart-item-button:hover {
   cursor: pointer;
+  filter: brightness(1.2);
 }
 
 .checkout-button {
@@ -323,4 +337,5 @@ ul {
 
 .checkout-button:hover {
   cursor: pointer;
+  filter: brightness(1.2);
 }

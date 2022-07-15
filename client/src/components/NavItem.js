@@ -6,7 +6,7 @@ function NavItem(props) {
     const [open, setOpen] = useState(false)
     // console.log(props)
     return (
-        <li className="nav-item">
+        <div className="nav-item">
             <Link
                 to={!props.children ? props.name : "#"}
                 className="icon-button"
@@ -15,7 +15,7 @@ function NavItem(props) {
                 {props.icon}
             </Link>
             {open && props.children}
-        </li>
+        </div>
     );
 }
 

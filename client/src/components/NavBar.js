@@ -11,7 +11,8 @@ import styled from "styled-components";
 const LogoImage = styled.img`
     width: auto;
     height: 400px;
-    margin: 0;
+    margin-right: 150px;
+    margin-bottom: 10px;
     `;
 
 function NavBar({ user, onLogout }) {
@@ -32,7 +33,7 @@ function NavBar({ user, onLogout }) {
                 }
                 {
                     user.username !== ''
-                        ? <h3 className="link" style={{ color: 'black' }} icon="Logout" onClick={onLogout}>Logout</h3>
+                        ? <h3 className="link" style={{ color: 'black', marginLeft: "35px" }} icon="Logout" onClick={onLogout}>Logout</h3>
                         : <Link className="link" to="/login" ><h3>Login</h3></Link>
                 }
             </div >
