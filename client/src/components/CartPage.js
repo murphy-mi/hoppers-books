@@ -135,9 +135,9 @@ function CartPage(user) {
         </CartItemContainer >
         <FrogImage src={frogPeek} />
       </div>
-      <div style={{ display: "flex", justifyContent: 'space-between', marginLeft: "22%", width: "60%", marginBottom: "20%" }}>
+      <div style={{ display: "flex", justifyContent: 'space-between', marginLeft: "20%", width: "56.5%", marginBottom: "20%" }}>
         <h3>
-          {`TOTAL: $ ${cartTotalPrice}`}
+          {`TOTAL: $ ${Math.floor(cartTotalPrice * 100) / 100}`}
         </h3>
         <button className="checkout-button" onClick={onCheckoutClick}>Checkout</button>
       </div>

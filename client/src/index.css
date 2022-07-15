@@ -37,7 +37,7 @@ ul {
   text-decoration: none;
   color: rgb(47, 43, 43);
   font-family: inherit;
-  font-size: 135%;
+  font-size: 175%;
   cursor: pointer;
   padding: 0;
 }
@@ -81,7 +81,7 @@ ul {
   --button-size: calc(var(--nav-size) * 0.5);
   width: 55px;
   height: 55px;
-  background-color: hsl(199, 100%, 97%);
+  background-color: hsl(200, 29%, 94%);
   border: solid 1px rgb(26, 44, 98);
   border-radius: 20%;
   padding: 5px;
@@ -230,6 +230,7 @@ ul {
   width: 700px;
   height: auto;
   text-align: center;
+  margin: 0 20px 0 20px;
 }
 
 .search-form {

@@ -9,6 +9,7 @@ function NavItem(props) {
         <div className="nav-item">
             <Link
                 to={!props.children ? props.name : "#"}
+                style={{ fontSize: "30px" }}
                 className="icon-button"
                 onClick={() => setOpen(!open)}
             >

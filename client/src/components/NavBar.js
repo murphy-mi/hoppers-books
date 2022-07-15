@@ -34,7 +34,7 @@ function NavBar({ user, onLogout }) {
                 {
                     user.username !== ''
                         ? <h3 className="link" style={{ color: 'black', marginLeft: "35px" }} icon="Logout" onClick={onLogout}>Logout</h3>
-                        : <Link className="link" to="/login" ><h3>Login</h3></Link>
+                        : <Link className="link" to="/login" ><h3 style={{ marginTop: "20px" }}>Login</h3></Link>
                 }
             </div >
         </nav >

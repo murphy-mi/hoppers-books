@@ -12,11 +12,11 @@ u1 = User.create(username: "hagay", password: "password", admin: true)
 u2 = User.create(username: "username", password: "password", admin: true)
 
 # Hardcover Fiction
-Book.create(title: "The Hotel Nantucket", price: 5.70, author: "Elin Hilderbrand", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316258678.jpg" )
+Book.create(title: "The Hotel Nantucket", price: 5.73, author: "Elin Hilderbrand", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316258678.jpg" )
 Book.create(title: "Rising Tiger", price: 6.44, author: "Brad Thor", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9781982182151.jpg" )
 Book.create(title: "Tomorrow, And Tomorrow, And Tomorrow", price: 7.79, author: "Gabrielle Zevin", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593321201.jpg" )
-Book.create(title: "Sparring Partners", price: 6.30, author: "John Grisham", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780385549325.jpg" )
-Book.create(title: "The Midnight Library", price: 6.10, author: "Matt Haig", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780525559474.jpg" )
+Book.create(title: "Sparring Partners", price: 6.32, author: "John Grisham", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780385549325.jpg" )
+Book.create(title: "The Midnight Library", price: 6.19, author: "Matt Haig", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780525559474.jpg" )
 
 Book.create(title: "Lessons In Chemistry", price: 4.11, author: "Bonnie Garmus", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9780385547345.jpg" )
 Book.create(title: "Suspects", price: 6.75, author: "Danielle Steel", genre: "Hardcover Fiction", image: "https://storage.googleapis.com/du-prd/books/images/9781984821676.jpg" )
@@ -56,10 +56,10 @@ Book.create(title: "Happy-Go-Lucky", price: 7.50, author: "David Sedaris", genre
 Book.create(title: "Killing The Killers", price: 6.62, author: "Bill O'Reilly", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9781250279255.jpg" )
 Book.create(title: "An Immense World", price: 8.98, author: "Ed Yong", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593133231.jpg" )
 
-Book.create(title: "Crying In H Mart", price: 4.80, author: "Michelle Zauner", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780525657743.jpg" )
+Book.create(title: "Crying In H Mart", price: 4.88, author: "Michelle Zauner", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780525657743.jpg" )
 Book.create(title: "Leadership", price: 5.71, author: "Henry Kissinger", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593489444.jpg" )
 Book.create(title: "Why We Did It", price: 10.84, author: "Tim Miller", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780063161474.jpg" )
-Book.create(title: "Invisible Storm", price: 11.40, author: "Jason Kander", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780358658962.jpg" )
+Book.create(title: "Invisible Storm", price: 11.45, author: "Jason Kander", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780358658962.jpg" )
 Book.create(title: "Greenlights", price: 6.67, author: "Matthew McConaughey", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780593139134.jpg" )
 
 Book.create(title: "James Patterson", price: 4.32, author: "James Patterson", genre: "Hardcover Nonfiction", image: "https://storage.googleapis.com/du-prd/books/images/9780316397537.jpg" )

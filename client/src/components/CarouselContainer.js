@@ -7,7 +7,7 @@ import styled from "styled-components";
 const SliderContainer = styled.div`
     width: 70%;
     height: 700px;
-    margin: 5% 15% 10% 15%;
+    margin: 2% 15% 10% 15%;
     background:  linear-gradient(rgba(162, 208, 162, 0.333), rgba(20, 63, 20, 0.333));
     border-radius: 15px;  
 `;
