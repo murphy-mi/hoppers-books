@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import frogMain from "../images/frog-main.png"
 
 const BookList = styled.div`
-    border: 1px solid green;
-    overflow-x: hidden;
-    overflow-y: auto;
+    border: 3px solid gray;
+    border-radius: 6px;
+    /* overflow-x: hidden; */
+    overflow: auto;
+    min-width: 400px;
     width: auto;
-    /* height: 400px; */
+    height: 400px;
     margin-bottom: 5px;
+    z-index: 3;
+    padding-right: 10px;
+    padding-left: 5px;
+    background-color: #F3F3F3;
     `;
 
 const ListName = styled.div`
@@ -15,12 +22,17 @@ const ListName = styled.div`
     margin-bottom: 0;
     `;
 
+const FrogImage = styled.img`
+    width: 300px;
+    height: 300px;
+    margin-top: 400px;
+    position: relative;
+    /* left: -140px; */
+`;
+
 function ProfilePage({ user }) {
     const [wishlists, setWishlists] = useState([])
     const [purchases, setPurchases] = useState([])
-
-    console.log("Profile User", user)
-
 
     useEffect(() => {
         fetch('http://localhost:3000/wishlists')
@@ -38,30 +50,39 @@ function ProfilePage({ user }) {
 
     const userPurchases = purchases.filter(purchase => purchase.user_id === user.id)
 
-    // console.log(userWishlists.map(w ishlist => wishlist.book.title.toString()))
-
     return (
         <div className="profile-page-container">
             <div>
-                <h2 style={{ display: "flex", justifyContent: 'center' }}>Hello, {user.username}!</h2>
+                <h2 style={{ display: "flex", justifyContent: 'center', fontSize: "45px" }}>Hello, {user.username}!</h2>
             </div>
             <div className="purchase-wishlist-container">
-                <ListName>Wishlist</ListName>
-                <BookList>
-                    <ul>
-                        {userWishlists.map(wishlist => (
-                            <li>{wishlist.book.title}</li>
-                        ))}
-                    </ul>
-                </BookList>
-                <ListName>Purchases</ListName>
-                <BookList>
-                    <ul>
-                        {userPurchases.map(purchase => (
-                            <li>{purchase.book.title}</li>
-                        ))}
-                    </ul>
-                </BookList>
+                <div>
+                    <ListName>Wishlist</ListName>
+                    <BookList>
+                        <ul>
+                            {userWishlists.map(wishlist => (
+                                <li>
+                                    <h2 style={{ marginBottom: 0 }}>{wishlist.book.title}</h2>
+                                    <h3 style={{ marginTop: 0 }}>{wishlist.book.author}</h3>
+                                </li>
+                            ))}
+                        </ul>
+                    </BookList>
+                </div>
+                <FrogImage src={frogMain} />
+                <div>
+                    <ListName>Purchases</ListName>
+                    <BookList>
+                        <ul>
+                            {userPurchases.map(purchase => (
+                                <li>
+                                    <h2 style={{ marginBottom: 0 }}>{purchase.book.title}</h2>
+                                    <h3 style={{ marginTop: 0 }}>{purchase.book.author}</h3>
+                                </li>
+                            ))}
+                        </ul>
+                    </BookList>
+                </div>
             </div>
         </div >
     );
