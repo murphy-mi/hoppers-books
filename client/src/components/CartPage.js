@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import frogPeek from "../images/frog-peek.png"
-
+import frogPeek from "../images/frog-peek.png";
 
 const CartItemContainer = styled.div`
   display: flex;
@@ -87,7 +86,7 @@ function CartPage(user) {
             })
         })
     })
-    navigate("../profile")
+    navigate("../")
   }
 
   function onRemoveClick(e) {
