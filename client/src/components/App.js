@@ -37,7 +37,7 @@ function App() {
 
   useEffect(() => {
     // auto-login
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch("https://hoppers-books.herokuapp.com/me").then((r) => {
       if (r.ok) {
         r.json().then(data => setUser(data));
       }
@@ -50,7 +50,7 @@ function App() {
   }
 
   function onLogout() {
-    fetch(`http://localhost:3000/logout`, { method: "DELETE" }).then((r) => {
+    fetch(`https://hoppers-books.herokuapp.com/logout`, { method: "DELETE" }).then((r) => {
       if (r.ok) {
         setUser(initialUser);
         navigate("../")

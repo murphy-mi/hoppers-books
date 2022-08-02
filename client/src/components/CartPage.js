@@ -55,7 +55,7 @@ function CartPage(user) {
   console.log(cartItems)
 
   useEffect(() => {
-    fetch('http://localhost:3000/cart_items')
+    fetch('https://hoppers-books.herokuapp.com/cart_items')
       .then(res => res.json())
       .then(setCartItems)
   }, [])
@@ -69,18 +69,18 @@ function CartPage(user) {
   function onCheckoutClick(e) {
     const userCartItems = cartItems.filter(cartItem => cartItem.user_id === user.user.id)
     userCartItems.forEach((cartItem) => {
-      fetch(`http://localhost:3000/purchases`, {
+      fetch(`https://hoppers-books.herokuapp.com/purchases`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ book_id: cartItem.book_id, user_id: user.user.id })
       })
         .then(res => res.json())
         .then(() => {
-          fetch(`http://localhost:3000/cart_items/${cartItem.id}`, {
+          fetch(`https://hoppers-books.herokuapp.com/cart_items/${cartItem.id}`, {
             method: 'DELETE',
           })
             .then(() => {
-              fetch('http://localhost:3000/cart_items')
+              fetch('https://hoppers-books.herokuapp.com/cart_items')
                 .then(res => res.json())
                 .then(setCartItems)
             })
@@ -90,11 +90,11 @@ function CartPage(user) {
   }
 
   function onRemoveClick(e) {
-    fetch(`http://localhost:3000/cart_items/${e.target.id}`, {
+    fetch(`https://hoppers-books.herokuapp.com/cart_items/${e.target.id}`, {
       method: 'DELETE',
     })
       .then(() => {
-        fetch('http://localhost:3000/cart_items')
+        fetch('https://hoppers-books.herokuapp.com/cart_items')
           .then(res => res.json())
           .then(setCartItems)
       })

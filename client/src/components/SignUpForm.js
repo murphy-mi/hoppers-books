@@ -63,7 +63,7 @@ function SignUpForm({ onLogin }) {
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
-    fetch("http://localhost:3000/signup", {
+    fetch("https://hoppers-books.herokuapp.com/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -12,7 +12,7 @@ function CarouselItem({ result, index, bookIndex, user }) {
             book_id: result.id,
             user_id: user.id
         }
-        fetch("http://localhost:3000/cart_items", {
+        fetch("https://hoppers-books.herokuapp.com/cart_items", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -33,7 +33,7 @@ function CarouselItem({ result, index, bookIndex, user }) {
             book_id: result.id,
             user_id: user.id
         }
-        fetch("http://localhost:3000/wishlists", {
+        fetch("https://hoppers-books.herokuapp.com/wishlists", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

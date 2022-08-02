@@ -50,7 +50,7 @@ function HomePage({ user }) {
     }
 
     useEffect(() => {
-        fetch('http://localhost:3000/best_sellers')
+        fetch('https://hoppers-books.herokuapp.com/best_sellers')
             .then(res => res.json())
             .then(data => {
                 resultCategories(data)

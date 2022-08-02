@@ -35,11 +35,11 @@ function ProfilePage({ user }) {
     const [purchases, setPurchases] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:3000/wishlists')
+        fetch('https://hoppers-books.herokuapp.com/wishlists')
             .then(res => res.json())
             .then(setWishlists)
 
-        fetch('http://localhost:3000/purchases')
+        fetch('https://hoppers-books.herokuapp.com/purchases')
             .then(res => res.json())
             .then(setPurchases)
     }, [])
