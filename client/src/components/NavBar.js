@@ -1,5 +1,3 @@
-// import { useNavigate } from "react-router-dom";
-// import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "./DropdownMenu.js";
 import NavItem from "./NavItem.js";
@@ -10,9 +8,9 @@ import styled from "styled-components";
 
 const LogoImage = styled.img`
     width: auto;
-    height: 400px;
-    margin-right: 150px;
-    margin-bottom: 10px;
+    height: 20rem;
+    margin-right: 2rem;
+    margin-bottom: 2rem;
     `;
 
 function NavBar({ user, onLogout }) {

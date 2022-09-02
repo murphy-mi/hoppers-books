@@ -78,7 +78,7 @@ function HomePage({ user }) {
     }
 
     return (
-        <>
+        <div className="homepage-container">
             <BannerContainer >
                 <h1 style={{ color: "white", fontSize: "80px", textAlign: "center", textShadow: "2px 2px black" }}>Welcome to Hopper's Books!</h1>
                 <h2 style={{ color: "white", fontSize: "60px", textAlign: "center", textShadow: "2px 2px black" }}>FREE shipping on all orders</h2>
@@ -89,7 +89,7 @@ function HomePage({ user }) {
             <CarouselContainer books={nonFictionResults} user={user} />
             <NytListTitle>Browse NYT Bestsellers - Young Adult</NytListTitle>
             <CarouselContainer books={youngAdultResults} user={user} />
-        </>
+        </div>
     );
 }
 
